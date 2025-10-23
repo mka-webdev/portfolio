@@ -74,32 +74,6 @@ Earlier academic and engineering projects demonstrating architectural and progra
 
 ---
 
-### 🧭 Repository Structure
-
-- **📂 mkawebdev-portfolio/**
-  - **featured-wordpress-projects/**
-    - `fictional-university.md`
-    - `accessibility-analyzer-plugin.md`
-    - `woocommerce-custom-theme.md`
-    - `gutenberg-blocks-pack.md`
-  - **wordpress-engineering-archive/**
-    - `plugin-experiments.md`
-    - `api-integrations.md`
-    - `testing-automation.md`
-  - **engineering-archive/**
-    - `springboot-wisdom.md`
-    - `javafx-student-grades.md`
-    - `malt-system.md`
-    - `aspnet-portal.md`
-    - `unity-wisdom-game.md`
-  - `skills-and-tools.md`
-  - `about.md`
-  - `contact.md`
-  - `README.md`
-
-
----
-
 > **Last updated:** October 2025  
 > © Mark Ashkenazi | mkawebdev.com
 
