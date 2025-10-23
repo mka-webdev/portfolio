@@ -1,6 +1,6 @@
 # 👋 Hi, I’m Mark Ashkenazi
 
-**WordPress Developer | Custom Themes • Plugins • WooCommerce • Gutenberg**
+**WordPress Developer | Custom Themes • Plugins • WooCommerce • Gutenberg • Accessibility-Driven Solutions**
 
 ---
 
