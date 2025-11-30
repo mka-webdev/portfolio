@@ -13,7 +13,7 @@ I specialise in custom **themes**, **plugins**, and **block development**, focus
 
 ---
 
-## 🏆 Featured WordPress Projects
+## 🏆 WordPress Projects
 
 | Project | Description | Stack |
 |----------|--------------|--------|
@@ -21,18 +21,6 @@ I specialise in custom **themes**, **plugins**, and **block development**, focus
 | 🔍 [**Accessibility Analyzer Plugin**](./featured-wordpress-projects/accessibility-analyzer-plugin.md) | Admin-side plugin demonstrating hooks, sanitisation, settings pages, and accessibility auditing. | PHP • WP Hooks • Admin UI |
 | 🛒 [**WooCommerce Storefront Theme**](./featured-wordpress-projects/woocommerce-custom-theme.md) | Custom WooCommerce-compatible theme with checkout field customisation and template overrides. | PHP • WooCommerce • Hooks |
 | ⚙️ [**Custom Gutenberg Blocks Pack**](./featured-wordpress-projects/gutenberg-blocks-pack.md) | A set of React-based Gutenberg blocks using `@wordpress/scripts`, SCSS, and theme.json configuration. | React • JS • PHP • Gutenberg |
-
----
-
-## ⚙️ WordPress Engineering Archive
-
-A collection of smaller technical builds and experiments exploring the **WordPress API**, plugin architecture, and optimisation workflows.
-
-- [Plugin Experiments](./wordpress-engineering-archive/plugin-experiments.md)
-- [REST API Integrations](./wordpress-engineering-archive/api-integrations.md)
-- [Testing & Automation](./wordpress-engineering-archive/testing-automation.md)
-
-> *This archive showcases the “under the hood” engineering that supports my larger projects.*
 
 ---
 
