@@ -1,20 +1,23 @@
 # 👋 About Me
 
-Hi, I’m **Mark Ashkenazi** — a WordPress Developer and Bachelor of Information Technology student specialising in application and web development.  
+Hi, I’m **Mark Ashkenazi** — an aspiring **Test Automation Engineer** and **Digital Accessibility Advocate**.
 
-I build **custom WordPress solutions** — themes, plugins, and modern Gutenberg blocks — with an emphasis on performance, accessibility, and clean architecture. My background in Java, C#, and Spring Boot gives me a strong grounding in software engineering, which I now apply within the WordPress ecosystem.  
+Coming from a background in IT support, web development, and application development, I’m building a portfolio around practical software testing, accessibility-aware quality assurance, and evidence-based project documentation.
 
-I enjoy combining engineering discipline with practical creativity: developing internal tools, e-commerce experiences, or lightweight content systems that make real businesses more efficient.  
+My current focus is on developing and documenting testing artefacts that show how software can be checked, improved, and explained clearly. This includes test scenarios, test cases, defect reports, API testing, UI automation, SQL checks, screenshots, and accessibility defect examples.
 
-Outside code, I’m an advocate for **accessible technology** and help manage my family’s IT consultancy, where I provide software and technical support to small business partners.  
+What draws me to digital accessibility is its potential for real social impact. For me, accessibility sits at the intersection of technical practice and inclusive design, where standards such as WCAG can be translated into practical checks, clearer defects, and more usable digital experiences.
+
+This repository supports my portfolio by collecting software development projects, testing artefacts, and accessibility-focused documentation in one place.
 
 ---
 
-### Quick facts
-- 🎓 Final-year B.InfoTech (Application Development major)
-- 🧩 Passionate about WordPress core, REST API, and accessibility
-- 💡 Blend of software engineering, UX awareness, and content systems
-- 💬 Always open to collaboration or mentorship in web accessibility and plugin development
+## Quick facts
+
+* 🎓 Bachelor of Information Technology background, focused on application development
+* 🧪 Building practical experience in software testing and test automation
+* ♿ Interested in digital accessibility, WCAG-based defects, and remediation evidence
+* 🛠️ Working with tools and technologies including Java, Spring Boot, Android, SQL, Postman, Selenium, Katalon, JMeter, and accessibility testing tools
+* 📁 Documenting real artefacts rather than only listing skills
 
 [← Back to Portfolio Home](./README.md)
-

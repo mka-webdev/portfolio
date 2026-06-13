@@ -1,0 +1,317 @@
+/* ===============================
+   Design tokens
+================================ */
+
+:root {
+  --site-bg: #f8f7f3;
+  --site-surface: #ffffff;
+  --site-text: #1f2933;
+  --site-muted: #5b6673;
+
+  /* Dark enough for readable text links and active nav */
+  --site-accent-text: #3f6031;
+
+  /* Used for buttons, borders, and decorative accents */
+  --site-accent: #567e44;
+  --site-accent-dark: #3f6031;
+
+  --site-border: #d8ddd2;
+  --site-focus: #1f2933;
+
+  --brand-github: #181717;
+  --brand-linkedin: #0a66c2;
+}
+
+
+/* ===============================
+   Base
+================================ */
+
+body {
+  background: var(--site-bg);
+  color: var(--site-text);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+main {
+  min-height: 60vh;
+}
+
+p {
+  max-width: 72ch;
+}
+
+a {
+  color: var(--site-accent-text);
+}
+
+a:hover {
+  color: var(--site-text);
+}
+
+
+/* ===============================
+   Accessibility and focus
+================================ */
+
+a:focus-visible,
+button:focus-visible,
+.nav-link:focus-visible,
+.btn:focus-visible,
+.icon-link:focus-visible {
+  outline: 3px solid var(--site-focus);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px var(--site-bg);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--site-text);
+  color: #ffffff;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+
+/* ===============================
+   Typography
+================================ */
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+h1 {
+  max-width: 950px;
+  margin-bottom: 1rem;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.lead {
+  max-width: 72ch;
+  color: var(--site-text);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+code {
+  color: #5b2b82;
+}
+
+
+/* ===============================
+   Layout sections
+================================ */
+
+main.container,
+.page-main {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.page-header {
+  max-width: 900px;
+  margin-bottom: 2.5rem;
+}
+
+.content-section {
+  padding: 4rem 0;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
+
+/* ===============================
+   Navigation
+================================ */
+.navbar {
+  font-size: 1.125rem;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
+.navbar-brand {
+  letter-spacing: -0.02em;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: var(--site-accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.nav-link.active {
+  color: var(--site-accent-dark) !important;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+/* ===============================
+   Hero
+================================ */
+
+.hero-section {
+  padding: 5rem 0;
+  background:
+    linear-gradient(135deg, rgba(86, 126, 68, 0.12), rgba(255, 255, 255, 0.2));
+}
+
+.hero-section h1 {
+  max-width: 1050px;
+  margin-bottom: 1.75rem;
+  font-size: clamp(3.25rem, 8vw, 6rem);
+}
+
+.hero-role {
+  max-width: 980px;
+  margin-bottom: 1.5rem;
+  color: var(--site-text);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.hero-lead {
+  max-width: 850px;
+}
+
+
+/* ===============================
+   Cards
+================================ */
+
+.info-card {
+  background: var(--site-surface);
+  border: 1px solid var(--site-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.info-card h2,
+.info-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+
+/* ===============================
+   Tags
+================================ */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 0;
+  margin: 1rem 0 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--site-border);
+  border-radius: 999px;
+  background: #f3f5ef;
+  font-size: 0.9rem;
+}
+
+
+/* ===============================
+   Buttons
+================================ */
+
+.btn-primary {
+  --bs-btn-bg: var(--site-accent);
+  --bs-btn-border-color: var(--site-accent);
+  --bs-btn-hover-bg: var(--site-accent-dark);
+  --bs-btn-hover-border-color: var(--site-accent-dark);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--site-accent-dark);
+  --bs-btn-border-color: var(--site-accent);
+  --bs-btn-hover-bg: var(--site-accent);
+  --bs-btn-hover-border-color: var(--site-accent);
+}
+
+
+/* ===============================
+   Icon links / Font Awesome
+================================ */
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.icon-link:hover {
+  background: rgba(86, 126, 68, 0.12);
+}
+
+.icon-link i {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.icon-github {
+  color: var(--brand-github);
+}
+
+.icon-linkedin {
+  color: var(--brand-linkedin);
+}
+
+.nav-social-link {
+  margin-left: 0.25rem;
+}
+
+.nav-social-start {
+  margin-left: 1.25rem;
+}
+
+
+/* ===============================
+   Footer
+================================ */
+
+footer {
+  background: var(--site-surface);
+}

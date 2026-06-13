@@ -1,22 +1,26 @@
 # 📬 Contact
 
-If you'd like to collaborate, discuss WordPress development opportunities, or just say hello — here’s how to reach me.
+If you’d like to connect about software testing, test automation, digital accessibility, or application development, here’s where to find me.
 
-| Channel | Link / Address |
-|----------|----------------|
-| **Email** | [mark@mkawebdev.com](mailto:mark@mkawebdev.com) |
-| **LinkedIn** | [linkedin.com/in/markashkenazi](https://www.linkedin.com/in/markashkenazi) |
-| **GitHub** | [github.com/mkawebdev](https://github.com/mkawebdev) |
-| **Portfolio site** | [mkawebdev.com](https://mkawebdev.com) |
+| Channel            | Link / Address                                                             |
+| ------------------ | -------------------------------------------------------------------------- |
+| **Email**          | [mark@mkawebdev.com](mailto:mark@mkawebdev.com)                            |
+| **LinkedIn**       | [linkedin.com/in/markashkenazi](https://www.linkedin.com/in/markashkenazi) |
+| **GitHub**         | [github.com/mkawebdev](https://github.com/mkawebdev)                       |
+| **Portfolio site** | [mkawebdev.com](https://mkawebdev.com)                                     |
 
 ---
 
-### Availability
-I’m currently open to **WordPress Developer** roles — remote or hybrid — and short-term projects involving:
-- Custom theme or plugin development  
-- Gutenberg block creation  
-- WooCommerce or REST API integration  
-- Accessibility and performance improvements  
+## Current direction
+
+I’m currently building my portfolio around **test automation**, **software testing artefacts**, and **digital accessibility evidence**.
+
+I’m especially interested in opportunities or conversations related to:
+
+* Test automation and software quality
+* Manual and exploratory testing documentation
+* API testing and UI automation
+* Accessibility-aware testing and WCAG-based defects
+* Application development projects with clear testing evidence
 
 [← Back to Portfolio Home](./README.md)
-

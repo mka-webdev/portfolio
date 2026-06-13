@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main id="main-content" class="container page-main">
+    <h1>Software testing</h1>
+    <p class="lead mb-4">
+      Testing artefacts from coursework, bootcamp practice, and project work. This section will grow as evidence is cleaned and published.
+    </p>
+
+    <div class="row g-4">
+      <% testingAreas.forEach(area => { %>
+        <div class="col-md-6">
+          <article class="info-card h-100">
+            <h2 class="h4"><%= area.title %></h2>
+            <p><%= area.summary %></p>
+
+            <p class="fw-semibold mb-2">Source folders:</p>
+            <ul>
+              <% area.folders.forEach(folder => { %>
+                <li><code><%= folder %></code></li>
+              <% }) %>
+            </ul>
+
+            <ul class="tag-list" aria-label="Skills demonstrated in <%= area.title %>">
+              <% area.skills.forEach(skill => { %>
+                <li><%= skill %></li>
+              <% }) %>
+            </ul>
+          </article>
+        </div>
+      <% }) %>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
