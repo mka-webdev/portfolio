@@ -1,6 +1,6 @@
 # Mark Ashkenazi Portfolio
 
-**Test Automation Engineer | Digital Accessibility Advocate**
+## Test Automation Engineer | Digital Accessibility Advocate
 
 This repository supports my portfolio at [mkawebdev.com](https://mkawebdev.com). It documents software testing artefacts, automation practice, accessibility-focused defects, and selected application development projects.
 
