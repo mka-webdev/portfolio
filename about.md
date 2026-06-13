@@ -14,10 +14,10 @@ This repository supports my portfolio by collecting software development project
 
 ## Quick facts
 
-* 🎓 Bachelor of Information Technology background, focused on application development
-* 🧪 Building practical experience in software testing and test automation
-* ♿ Interested in digital accessibility, WCAG-based defects, and remediation evidence
-* 🛠️ Working with tools and technologies including Java, Spring Boot, Android, SQL, Postman, Selenium, Katalon, JMeter, and accessibility testing tools
-* 📁 Documenting real artefacts rather than only listing skills
+- 🎓 Bachelor of Information Technology background, focused on application development
+- 🧪 Building practical experience in software testing and test automation
+- ♿ Interested in digital accessibility, WCAG-based defects, and remediation evidence
+- 🛠️ Working with tools and technologies including Java, Spring Boot, Android, SQL, Postman, Selenium, Katalon, JMeter, and accessibility testing tools
+- 📁 Documenting real artefacts rather than only listing skills
 
 [← Back to Portfolio Home](./README.md)
