@@ -1,68 +1,54 @@
-# 👋 Hi, I’m Mark Ashkenazi
+# Mark Ashkenazi Portfolio
 
-**WordPress Developer | Custom Themes • Plugins • WooCommerce • Gutenberg • Accessibility-Driven Solutions**
+**Test Automation Engineer | Digital Accessibility Advocate**
 
----
+This repository supports my portfolio at [mkawebdev.com](https://mkawebdev.com). It documents software testing artefacts, automation practice, accessibility-focused defects, and selected application development projects.
 
-### 🎯 About This Portfolio
-
-Welcome to my development portfolio — a curated showcase of my work as a **WordPress developer** and **software engineer**.  
-Here you’ll find projects that demonstrate my ability to build and extend WordPress using **clean code, accessibility principles, and modern workflows**.  
-
-I specialise in custom **themes**, **plugins**, and **block development**, focusing on scalable, maintainable architecture that serves real business needs.
+The aim of this repository is to show evidence rather than only list skills. It brings together test scenarios, test cases, defect reports, API testing, UI automation, SQL checks, accessibility notes, screenshots, and project documentation.
 
 ---
 
-## 🏆 WordPress Projects
+## Portfolio structure
 
-| Project | Description | Stack |
-|----------|--------------|--------|
-| 🎓 [**Fictional University**](./featured-wordpress-projects/fictional-university.md) | Custom WordPress theme built from scratch with REST API, AJAX search, ACF, and Google Maps integration. | PHP • JS • WP REST API • ACF |
-| 🔍 [**Accessibility Analyzer Plugin**](./featured-wordpress-projects/accessibility-analyzer-plugin.md) | Admin-side plugin demonstrating hooks, sanitisation, settings pages, and accessibility auditing. | PHP • WP Hooks • Admin UI |
-| 🛒 [**WooCommerce Storefront Theme**](./featured-wordpress-projects/woocommerce-custom-theme.md) | Custom WooCommerce-compatible theme with checkout field customisation and template overrides. | PHP • WooCommerce • Hooks |
-| ⚙️ [**Custom Gutenberg Blocks Pack**](./featured-wordpress-projects/gutenberg-blocks-pack.md) | A set of React-based Gutenberg blocks using `@wordpress/scripts`, SCSS, and theme.json configuration. | React • JS • PHP • Gutenberg |
-
----
-
-## 🧠 Engineering Archive (University & Broader Software)
-
-Earlier academic and engineering projects demonstrating architectural and programming fundamentals across multiple stacks.
-
-- [Spring Boot “Wisdom” Platform](./engineering-archive/springboot-wisdom.md)
-- [Student Grade System (JavaFX)](./engineering-archive/javafx-student-grades.md)
-- [Malt’s System (JavaFX)](./engineering-archive/malt-system.md)
-- [ASP.NET MVC Portal](./engineering-archive/aspnet-portal.md)
-- [Unity “Wisdom” Game](./engineering-archive/unity-wisdom-game.md)
-
-> These projects form the foundation of my engineering mindset — modular design, object-oriented programming, and system architecture.
+| Area                                                                | Description                                                                                     |
+| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [`my-portfolio-website`](./my-portfolio-website/)                   | Express-based portfolio website for mkawebdev.com                                               |
+| [`software-development-projects`](./software-development-projects/) | Selected university and capstone software development projects                                  |
+| [`testing-portfolio`](./testing-portfolio/)                         | Software testing artefacts, automation practice, accessibility defects, and supporting evidence |
+| [`about.md`](./about.md)                                            | Short professional background and current direction                                             |
+| [`skills-and-tools.md`](./skills-and-tools.md)                      | Skills, tools, and technologies represented across this portfolio                               |
+| [`contact.md`](./contact.md)                                        | Contact and profile links                                                                       |
 
 ---
 
-## 🧰 [Skills & Tools](./skills-and-tools.md)
+## Current focus
 
-- WordPress Core, PHP, MySQL, Custom Themes & Plugins  
-- Gutenberg (React / JSX), ACF, REST API, WooCommerce  
-- HTML5, CSS3, JS (ES6+), Git, Webpack, npm  
-- Accessibility (ARIA, WCAG), Performance Optimisation  
+I am currently building this portfolio around:
 
----
-
-## 👤 [About Me](./about.md)
-
-> *“I build accessible, performant WordPress systems that combine engineering precision with creative usability.”*
-
----
-
-## 📬 [Contact](./contact.md)
-
-- 📧 [mark@mkawebdev.com](mailto:mark@mkawebdev.com)  
-- 🔗 [linkedin.com/in/markashkenazi](https://www.linkedin.com/in/markashkenazi)  
-- 💻 [github.com/mkawebdev](https://github.com/mkawebdev)  
-- 🌐 [mkawebdev.com](https://mkawebdev.com)
+* Software testing artefacts
+* Test automation practice
+* API testing
+* UI automation
+* Accessibility-aware testing
+* WCAG-based defect examples
+* Evidence-based project documentation
 
 ---
 
-> **Last updated:** October 2025  
-> © Mark Ashkenazi | mkawebdev.com
+## Main project areas
 
+### Software development projects
 
+The [`software-development-projects`](./software-development-projects/) folder contains selected projects from my Bachelor of Information Technology and capstone work, including Java, Spring Boot, Android, JavaFX, and accessibility-focused platform work.
+
+### Testing portfolio
+
+The [`testing-portfolio`](./testing-portfolio/) folder contains structured testing artefacts and practice evidence, including test scenarios, test cases, defect reports, Postman work, JMeter work, Selenium, Katalon, SQL checks, screenshots, and accessibility defects.
+
+---
+
+## Links
+
+* Portfolio site: [mkawebdev.com](https://mkawebdev.com)
+* GitHub: [github.com/mkawebdev](https://github.com/mkawebdev)
+* LinkedIn: [linkedin.com/in/markashkenazi](https://www.linkedin.com/in/markashkenazi)
