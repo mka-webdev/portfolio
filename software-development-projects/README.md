@@ -9,8 +9,7 @@ These projects are included because they provide useful development context for 
 ## Projects
 
 | Project                                                                                   | Description                                                                                                                                        |
-| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`student-grade-system`](./student-grade-system/)                                         | Java/JavaFX student grade management system developed for the Software Design and Development unit.                                                |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |                                           |
 | [`whiskey-product-information-system`](./whiskey-product-information-system/)             | Java/JavaFX product information system developed for the Software Design and Development unit.                                                     |
 | [`social-media-playlist-app`](./social-media-playlist-app/)                               | Enterprise Software Development project using the iTunes Search API, authentication, playlist/list creation, sharing, and chat functionality.      |
 | [`nuscan-android-app`](./nuscan-android-app/)                                             | Android product and nutrition catalogue app with local database storage, tags, store data, map integration, email sharing, and remote JSON import. |
