@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Testing evidence placeholder</title>
+  <desc id="desc">A simple placeholder image for future testing evidence.</desc>
+  <rect width="900" height="560" fill="#f3f5ef"/>
+  <rect x="70" y="70" width="760" height="420" rx="22" fill="#ffffff" stroke="#d8ddd2" stroke-width="4"/>
+  <circle cx="145" cy="150" r="28" fill="#567e44"/>
+  <rect x="200" y="132" width="410" height="18" rx="6" fill="#1f2933"/>
+  <rect x="200" y="165" width="520" height="14" rx="6" fill="#d8ddd2"/>
+  <circle cx="145" cy="260" r="28" fill="#567e44" opacity="0.85"/>
+  <rect x="200" y="242" width="350" height="18" rx="6" fill="#1f2933"/>
+  <rect x="200" y="275" width="480" height="14" rx="6" fill="#d8ddd2"/>
+  <circle cx="145" cy="370" r="28" fill="#567e44" opacity="0.7"/>
+  <rect x="200" y="352" width="390" height="18" rx="6" fill="#1f2933"/>
+  <rect x="200" y="385" width="440" height="14" rx="6" fill="#d8ddd2"/>
+</svg>

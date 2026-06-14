@@ -136,15 +136,105 @@ main.container,
   padding: 4rem 0;
 }
 
+.text-section {
+  max-width: 1100px;
+  margin-bottom: 3.5rem;
+}
+
+.text-section h2 {
+  margin-bottom: 1rem;
+}
+
+.text-section p {
+  max-width: 72ch;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
 .section-heading {
   max-width: 760px;
   margin-bottom: 2rem;
 }
 
+.section-heading p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* ===============================
+   Accessibility page
+================================ */
+
+.accessibility-page .page-header {
+  max-width: 1100px;
+}
+
+.accessibility-page h1 {
+  max-width: 1100px;
+  font-size: clamp(3rem, 5vw, 5rem);
+}
+
+.accessibility-page .lead {
+  max-width: 72ch;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+}
+
+
+/* ===============================
+   About page
+================================ */
+
+.about-intro {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 1100px;
+  margin-bottom: 3.5rem;
+}
+
+.about-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--site-border);
+  border-radius: 999px;
+}
+
+.plain-list {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 72ch;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.plain-list li {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.plain-list strong {
+  font-weight: 700;
+}
+
+@media (max-width: 767.98px) {
+  .about-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .about-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
 
 /* ===============================
    Navigation
 ================================ */
+
 .navbar {
   font-size: 1.125rem;
 }
@@ -178,6 +268,7 @@ main.container,
   text-decoration: underline;
   text-underline-offset: 0.35em;
 }
+
 
 /* ===============================
    Hero
@@ -309,9 +400,199 @@ main.container,
 
 
 /* ===============================
+   Project gallery
+================================ */
+
+.project-gallery {
+  margin: 2.5rem 0 3rem;
+}
+
+.project-gallery-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.project-gallery-card {
+  overflow: hidden;
+  height: 100%;
+  background: var(--site-surface);
+  border: 1px solid var(--site-border);
+  border-radius: 1rem;
+}
+
+.project-gallery-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.project-gallery-caption {
+  max-width: none;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  color: var(--site-text);
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .project-gallery-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .project-gallery-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===============================
+   Project detail links
+================================ */
+
+.project-repo-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-repo-link a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.project-repo-link i {
+  color: var(--brand-github);
+  font-size: 1.25rem;
+}
+
+
+/* ===============================
+   Project technology stack
+================================ */
+
+.project-stack-list {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 760px;
+  padding-left: 0;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.project-stack-list li {
+  line-height: 1.6;
+}
+
+.project-stack-list strong {
+  color: var(--site-text);
+}
+
+
+/* ===============================
    Footer
 ================================ */
 
-footer {
+.site-footer {
   background: var(--site-surface);
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2rem;
+  padding: 3rem 0 2rem;
+}
+
+.footer-name {
+  margin-bottom: 0.35rem;
+  color: var(--site-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.footer-name a {
+  color: var(--site-text);
+  text-decoration: none;
+}
+
+.footer-name a:hover {
+  color: var(--site-accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.footer-role {
+  margin-bottom: 0.75rem;
+  color: var(--site-text);
+}
+
+.footer-heading {
+  margin-bottom: 0.75rem;
+  color: var(--site-text);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.footer-links ul,
+.footer-socials ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.footer-links ul {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: 2.5rem;
+  row-gap: 0.65rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+.footer-socials ul {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.footer-bottom {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--site-border);
+}
+
+.footer-bottom p {
+  max-width: none;
+  margin-bottom: 0;
+  color: var(--site-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .footer-links ul {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Project screenshot placeholder</title>
+  <desc id="desc">A simple placeholder image for a future project screenshot.</desc>
+  <rect width="900" height="560" fill="#f3f5ef"/>
+  <rect x="48" y="48" width="804" height="464" rx="24" fill="#ffffff" stroke="#d8ddd2" stroke-width="4"/>
+  <rect x="96" y="110" width="280" height="28" rx="8" fill="#3f6031"/>
+  <rect x="96" y="170" width="650" height="18" rx="6" fill="#d8ddd2"/>
+  <rect x="96" y="215" width="560" height="18" rx="6" fill="#d8ddd2"/>
+  <rect x="96" y="285" width="220" height="120" rx="16" fill="#567e44" opacity="0.18"/>
+  <rect x="350" y="285" width="220" height="120" rx="16" fill="#567e44" opacity="0.18"/>
+  <rect x="604" y="285" width="142" height="120" rx="16" fill="#567e44" opacity="0.18"/>
+</svg>
