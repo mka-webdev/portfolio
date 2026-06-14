@@ -50,6 +50,15 @@ To run the project:
 
 The project has been confirmed to launch successfully in NetBeans, opening to the Whiskey Information System login screen.
 
+### Demo login credentials
+
+The following seeded test user has been confirmed to work:
+
+- **Username:** `jhj`
+- **Password:** `password`
+
+This account uses the default password. The application requires the default password to be changed before the user can access the whiskey product database.
+
 ## Testing focus
 
 My portfolio focus for this project is on testing the existing application rather than redesigning or rebuilding it.

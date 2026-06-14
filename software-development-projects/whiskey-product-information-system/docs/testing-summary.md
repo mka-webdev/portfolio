@@ -1,128 +1,141 @@
-# Whiskey Product Information System — Testing Summary
+# Whiskey Product Information System — Testing Evidence
 
 ## Purpose
 
-This document summarises the testing evidence connected to the Whiskey Product Information System.
+This folder documents testing evidence for the Whiskey Product Information System.
 
-The portfolio focus for this project is on testing the existing application rather than redesigning or rebuilding it. The application remains a university software development project, while the testing documentation explains how its behaviour can be checked against expected outcomes.
+The focus is on showing how the existing JavaFX application can be treated as a system under test. The project already includes JUnit 5 tests for selected application logic and validation classes, and this documentation summarises the areas covered by those tests.
 
-## Testing scope
+## Evidence
 
-The project includes JUnit 5 unit tests for selected application logic and validation classes.
+- [JUnit test results screenshot](./junit-tests-passed.png)
 
-The testing focuses on areas that can be checked independently from the full JavaFX interface and database setup, including:
+The screenshot shows the NetBeans Test Results panel with passing JUnit tests.
 
-- whiskey record navigation
-- age-range validation
-- region validation
-- login field validation
-- password-change field validation
-- existing credential checks
-- new password validation rules
+## Test files
 
-## Classes under test
+The project includes three JUnit 5 test files:
 
-### WhiskeyDataManager
+- `WhiskeyDataManagerTest.java`
+- `WhiskeyDataValidatorTest.java`
+- `UserDataValidatorTest.java`
 
-The `WhiskeyDataManager` tests focus on navigation behaviour through whiskey records.
+## WhiskeyDataManagerTest
 
-Tested methods:
+This test file covers navigation behaviour for whiskey records.
+
+### Methods tested
 
 - `next()`
 - `previous()`
 
-Testing covered:
+### Test coverage
 
-- empty record arrays
-- one-record navigation
-- two-record navigation
-- multiple-record navigation
-- null or empty record data
-- previous and next behaviour across available records
+- previous navigation when no records are available
+- next navigation when no records are available
+- previous navigation with two records
+- next navigation with two records
+- previous navigation when the data array is null
+- next navigation when the data array is null
+- previous navigation with one record
+- previous navigation across multiple records
+- next navigation across multiple records
+- next navigation with one record
 
-### WhiskeyDataValidator
+## WhiskeyDataValidatorTest
 
-The `WhiskeyDataValidator` tests focus on input validation for whiskey product queries.
+This test file covers validation logic for whiskey product queries.
 
-Tested methods:
+### Methods tested
 
 - `checkAgeRange(String b1, String b2)`
 - `checkRegion(String r)`
 
-Testing covered:
+### Age-range validation coverage
 
-- valid age ranges
-- null age bounds
-- empty age bounds
-- non-numeric age input
-- negative age values
-- values outside the expected range
-- boundary values
+- valid age range
+- null lower bound
+- null upper bound
+- empty lower bound
+- empty upper bound
+- non-numeric lower bound
+- non-numeric upper bound
+- negative lower bound
+- negative upper bound
+- lower bound above accepted range
+- upper bound above accepted range
 - upper bound lower than lower bound
-- valid region names
+- boundary values
+
+### Region validation coverage
+
+- valid region name
 - null region input
 - empty region input
 - non-alphabetic region input
 
-### UserDataValidator
+## UserDataValidatorTest
 
-The `UserDataValidator` tests focus on login and password-change validation.
+This test file covers validation logic for login and password-change behaviour.
 
-Tested methods:
+### Methods tested
 
 - `checkForFieldsPresent(String n, String p)`
 - `checkForFieldsPresent(String n, String oldp, String newp)`
 - `checkCurrentDetails(UserDetails ud, String n, String oldp)`
 - `checkNewDetails(UserDetails ud, String n, String oldp, String newp)`
 
-Testing covered:
+### Login field validation coverage
 
-- login field presence
-- password-change field presence
-- null fields
-- empty fields
-- valid username and password checks
-- non-alphabetic username input
+- username and password both present
+- null username
+- null password
+- empty username
+- empty password
+- non-alphabetic username
+
+### Change-password field validation coverage
+
+- username, old password, and new password all present
+- null username
+- null old password
+- null new password
+- empty username
+- empty old password
+- empty new password
+- non-alphabetic username
+
+### Current credential validation coverage
+
+- valid current username and password
 - missing or corrupted user data
-- non-existing usernames
-- incorrect existing-user passwords
-- new password strength rules
-- password comparison rules
-- invalid characters in new passwords
+- non-existing username
+- incorrect current password
+
+### New password validation coverage
+
+- valid new password
+- new password matching old password
+- new password too short
+- new password without an uppercase letter
+- new password without a lowercase letter
+- new password without a digit
+- new password containing invalid characters
 
 ## Testing approach
 
-This project is not being retrofitted into a full Software Testing Bootcamp-style artefact set.
+This project is not being retrofitted into a full Software Testing Bootcamp-style artefact set. Instead, it is being documented as an existing university application under test.
 
-Instead, it is being used as an existing application under test. The goal is to document practical testing evidence around the project as it exists.
+The testing evidence shows:
 
-The testing documentation may be expanded with:
-
-- selected JUnit test result screenshots
-- selected cleaned test files
-- notes explaining important test cases
-- application screenshots
-- short notes about any small bug fixes or code corrections
-
-## Evidence status
-
-Current evidence:
-
-- JUnit 5 unit tests exist in the project
-- application launches successfully in NetBeans
-- login screen has been confirmed to open
-- testing areas have been identified and summarised
-
-Evidence to add later:
-
-- screenshot of the application login screen
-- screenshot of product query screen
-- screenshot of JUnit test results
-- selected notes from cleaned test files
-- database setup notes, if needed for review
+- existing JUnit 5 unit tests
+- validation behaviour
+- expected and actual outcomes
+- record navigation behaviour
+- password and login validation rules
 
 ## Portfolio note
 
-This testing evidence supports my portfolio direction by showing how an existing Java application can be treated as a system under test.
+This evidence supports my portfolio direction by showing existing Java unit testing experience on a working JavaFX application.
 
-The focus is not to make this project look like a new testing bootcamp exercise. The focus is to show existing unit testing, validation behaviour, and practical review evidence for a working JavaFX application.
+The goal is not to overstate the project. The goal is to show that the application can be run, reviewed, and tested with documented evidence.
