@@ -180,6 +180,28 @@ main.container,
   font-size: clamp(1.25rem, 1.8vw, 1.55rem);
 }
 
+/* ===============================
+   Contact page
+================================ */
+
+.contact-form {
+  max-width: 720px;
+}
+
+.contact-form .form-label {
+  font-weight: 700;
+}
+
+.contact-form .form-control {
+  border-color: var(--site-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.9rem;
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--site-accent);
+  box-shadow: 0 0 0 0.25rem rgba(86, 126, 68, 0.2);
+}
 
 /* ===============================
    About page

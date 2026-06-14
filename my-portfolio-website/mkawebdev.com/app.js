@@ -1,5 +1,8 @@
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const projects = require('./data/projects');
 const testingAreas = require('./data/testingAreas');
@@ -8,12 +11,22 @@ const site = require('./data/site');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
 // EJS setup
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Public static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false }));
+
 app.use((req, res, next) => {
   res.locals.site = site;
   next();
@@ -76,7 +89,53 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
   res.render('pages/contact', {
     title: 'Contact',
-    currentPage: 'contact'
+    currentPage: 'contact',
+    formStatus: null
+  });
+});
+
+app.post('/contact', (req, res) => {
+  const { name, email, subject, message, website } = req.body || {};
+
+  // Honeypot field for basic spam protection.
+  if (website) {
+    return res.render('pages/contact', {
+      title: 'Contact',
+      currentPage: 'contact',
+      formStatus: 'success'
+    });
+  }
+
+  if (!name || !email || !message) {
+    return res.render('pages/contact', {
+      title: 'Contact',
+      currentPage: 'contact',
+      formStatus: 'error'
+    });
+  }
+
+  // Respond immediately so the user is not waiting for Gmail SMTP.
+  res.render('pages/contact', {
+    title: 'Contact',
+    currentPage: 'contact',
+    formStatus: 'success'
+  });
+
+  // Send email in the background.
+  transporter.sendMail({
+    from: `"mkawebdev contact form" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_TO,
+    replyTo: email,
+    subject: subject ? `Portfolio contact: ${subject}` : 'Portfolio contact form message',
+    text: `
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+    `
+  }).catch((error) => {
+    console.error('Contact form email error:', error);
   });
 });
 
