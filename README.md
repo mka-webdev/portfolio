@@ -50,5 +50,5 @@ The [`testing-portfolio`](./testing-portfolio/) folder contains structured testi
 ## Links
 
 * Portfolio site: [mkawebdev.com](https://mkawebdev.com)
-* GitHub: [github.com/mkawebdev](https://github.com/mkawebdev/portfolio)
+* GitHub: [github.com/mkawebdev/portfolio](https://github.com/mkawebdev/portfolio)
 * LinkedIn: [linkedin.com/in/markashkenazi](https://www.linkedin.com/in/markashkenazi)
