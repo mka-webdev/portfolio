@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <title>My Playlists</title>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}" />
+</head>
+
+<body>
+  <div class="screen">
+    <div class="conversations">
+      <div class="conversations-padding">
+        <div style="
+            margin: 10px 0;
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 12px;
+          ">👤
+          <strong th:text="${currentUser}" class="body" style="color: black">Current User</strong>
+        </div>
+
+        <div style="display: flex; justify-content: space-evenly; padding: 5px, 0px, 0px, 0px; margin: 5px;">
+          <a th:href="@{/chat}">Chat</a> |
+          <a th:href="@{/audio}">Audio</a> |
+          <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit"
+              style="all: unset; font-family: inherit; font-size: inherit; color: inherit; text-decoration: underline; cursor: pointer;">
+              Switch User
+            </button>
+          </form>
+        </div>
+
+        <hr />
+      </div>
+    </div>
+
+    <div class="chat">
+      <div class="chat-padding">
+        <div class="header">
+          <h2>Playlists</h2>
+        </div>
+
+        <form method="post" th:action="@{/playlists/create}" style="
+              display: flex;
+              flex-wrap: nowrap;
+              align-items: center;
+              gap: 10px;
+              background: #f5f5f5;
+              padding: 15px;
+              border-radius: 5px;
+              margin-bottom: 20px;
+            ">
+          <label for="playlist-name" style="color: #333; font-weight: bold">Create New Playlist:</label>
+          <input type="text" style="width: auto; flex: 1" name="name" placeholder="Enter playlist name" required />
+          <button type="submit" style="
+                background: #4caf50;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+              ">
+            Create
+          </button>
+        </form>
+
+        <div th:if="${#lists.isEmpty(playlists)}" style="text-align: center; padding: 40px; color: #666">
+          <p>📝 <em>No playlists available yet.</em></p>
+          <p>
+            <small>Create your first playlist above to get started!</small>
+          </p>
+        </div>
+
+        <div th:unless="${#lists.isEmpty(playlists)}">
+          <h2 th:text="'Available Playlists (' + ${#lists.size(playlists)} + ')'">
+            Available Playlists
+          </h2>
+          <ul style="list-style: none; padding: 0">
+            <li th:each="p : ${playlists}" style="
+                  margin: 10px 0;
+                  padding: 10px;
+                  background: #f9f9f9;
+                  border-radius: 5px;
+                ">
+              <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                  ">
+                <div>
+                  <a th:href="@{'/playlists/' + ${p.id}}" th:text="${p.name}" style="
+                        font-weight: bold;
+                        text-decoration: none;
+                        color: #333;
+                      ">A Playlist</a>
+                  <small style="color: #2196f3; margin-left: 8px" th:text="'[' + ${p.ownerUsername} + ']'" />
+                  <small th:if="${p.ownerUsername == 'demo'}" style="color: #ff6b6b; margin-left: 8px">[Demo]</small>
+                  <br /><small style="color: #666"
+                    th:text="'Created: ' + ${#temporals.format(p.createdAt, 'MMM dd, yyyy')}">Created date</small>
+                </div>
+                <div>
+                  <a th:href="@{'/playlists/' + ${p.id}}" style="
+                        background: #2196f3;
+                        color: white;
+                        padding: 5px 10px;
+                        text-decoration: none;
+                        border-radius: 3px;
+                        font-size: 12px;
+                      ">View</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -8,76 +8,82 @@
 <body>
   <%- include('../partials/navbar') %>
 
-  <main id="main-content" class="container page-main">
-    <nav aria-label="Breadcrumb" class="mb-4">
-      <a href="/projects">Projects</a>
-      <span aria-hidden="true"> / </span>
-      <span><%= project.title %></span>
-    </nav>
+    <main id="main-content" class="container page-main">
+      <nav aria-label="Breadcrumb" class="mb-4">
+        <a href="/projects">Projects</a>
+        <span aria-hidden="true"> / </span>
+        <span>
+          <%= project.title %>
+        </span>
+      </nav>
 
-    <header class="page-header">
-      <p class="text-secondary mb-2">
-        <%= project.type %>
-      </p>
-
-      <h1>
-        <%= project.title %>
-      </h1>
-
-      <p class="lead">
-        <%= project.summary %>
-      </p>
-
-      <% if (project.githubReadme) { %>
-        <p class="project-repo-link mt-4">
-          <a href="<%= project.githubReadme %>" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-github" aria-hidden="true"></i>
-            <%= project.title %> on GitHub
-            <span class="visually-hidden">opens in a new tab</span>
-          </a>
+      <header class="page-header">
+        <p class="text-secondary mb-2">
+          <%= project.type %>
         </p>
-      <% } %>
-    </header>
 
-    <% if (project.gallery && project.gallery.length) { %>
-      <section class="project-gallery" aria-labelledby="project-gallery-heading">
-        <h2 id="project-gallery-heading" class="visually-hidden">Project screenshots</h2>
+        <h1>
+          <%= project.title %>
+        </h1>
 
-        <ul class="project-gallery-list">
-          <% project.gallery.forEach(image => { %>
-            <li>
-              <figure class="project-gallery-card">
-                <img src="<%= image.src %>" alt="<%= image.alt %>">
+        <p class="lead">
+          <%= project.summary %>
+        </p>
 
-                <figcaption class="project-gallery-caption">
-                  <%= image.caption %>
-                </figcaption>
-              </figure>
-            </li>
-          <% }) %>
-        </ul>
-      </section>
-    <% } %>
+        <% if (project.githubReadme) { %>
+          <p class="project-repo-link mt-4">
+            <a href="<%= project.githubReadme %>" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <span>Source code on GitHub</span>
+              <span class="visually-hidden">opens in a new tab</span>
+            </a>
+          </p>
+          <% } %>
+      </header>
 
-    <section class="content-section pt-0">
-  <h2 class="mt-4">Technologies and tools</h2>
+      <% if (project.gallery && project.gallery.length) { %>
+        <section class="project-gallery" aria-labelledby="project-gallery-heading">
+          <h2 id="project-gallery-heading" class="visually-hidden">Project screenshots</h2>
 
-  <% if (project.stack && project.stack.length) { %>
-  <ul class="project-stack-list">
-    <% project.stack.forEach(item => { %>
-      <li>
-        <strong><%= item.label %>:</strong>
-        <span><%= item.value %></span>
-      </li>
-    <% }) %>
-  </ul>
-<% } %>
-</section>
-  </main>
+          <ul class="project-gallery-list">
+            <% project.gallery.forEach(image=> { %>
+              <li>
+                <figure class="project-gallery-card">
+                  <img src="<%= image.src %>" alt="<%= image.alt %>">
 
-  <%- include('../partials/footer') %>
+                  <figcaption class="project-gallery-caption">
+                    <%= image.caption %>
+                  </figcaption>
+                </figure>
+              </li>
+              <% }) %>
+          </ul>
+        </section>
+        <% } %>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+          <section class="content-section pt-0">
+            <h2 class="mt-4">Technologies and tools</h2>
+
+            <% if (project.stack && project.stack.length) { %>
+              <ul class="project-stack-list">
+                <% project.stack.forEach(item=> { %>
+                  <li>
+                    <strong>
+                      <%= item.label %>:
+                    </strong>
+                    <span>
+                      <%= item.value %>
+                    </span>
+                  </li>
+                  <% }) %>
+              </ul>
+              <% } %>
+          </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

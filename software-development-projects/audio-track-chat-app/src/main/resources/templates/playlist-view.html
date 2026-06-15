@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <title th:text="${playlist.name}">Playlist</title>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}" />
+</head>
+
+<body>
+  <div class="screen">
+    <div class="conversations">
+      <div class="conversations-padding">
+        <div style="
+            margin: 10px 0;
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 12px;
+          ">👤
+          <strong th:text="${currentUser}" class="body" style="color: black">Current User</strong>
+        </div>
+
+        <div style="display: flex; justify-content: space-evenly; padding: 5px, 0px, 0px, 0px; margin: 5px;">
+          <a th:href="@{/chat}">Chat</a> |
+          <a th:href="@{/audio}">Audio</a> |
+          <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit"
+              style="all: unset; font-family: inherit; font-size: inherit; color: inherit; text-decoration: underline; cursor: pointer;">
+              Switch User
+            </button>
+          </form>
+        </div>
+
+        <hr />
+      </div>
+    </div>
+
+    <div class="chat">
+      <div class="chat-padding">
+        <!-- Share playlist to existing chats-->
+        <div class="header">
+          <h2 th:text="${playlist.name}">Playlist</h2>
+        </div>
+
+        <p>
+          Share link:
+          <code th:text="@{'/playlists/' + ${playlist.id}}">/playlists/1</code>
+        </p>
+
+        <div th:if="${chatPartners.size() > 0 and currentUser == playlist.ownerUsername}">
+          <form method="post" th:action="@{/playlists/{id}/share(id=${playlist.id})}">
+            <label for="to">Share with:</label>
+            <select name="to" id="to">
+              <option th:each="partner : ${chatPartners}" th:value="${partner}" th:text="${partner}"></option>
+            </select>
+            <br />
+
+            <label for="message">Message:</label>
+            <input type="text" name="message" id="message" placeholder="Add a message (optional)" />
+            <button type="submit">Share Playlist</button>
+          </form>
+          <hr />
+        </div>
+
+        <!-- Add a track -->
+        <div th:if="${currentUser == playlist.ownerUsername}">
+          <h3>Add a track</h3>
+          <form th:action="@{'/playlists/' + ${playlist.id} + '/add'}" method="post" style="margin: 10px 0 20px 0">
+            <label>
+              Track
+              <select name="trackId" required style="min-width: 260px">
+                <option value="" disabled selected>Select a track…</option>
+                <option th:each="t : ${allTracks}" th:value="${t.id}"
+                  th:text="${#strings.isEmpty(t.artist) ? t.title : t.title + ' by ' + t.artist} + ' (ID ' + ${t.id} + ')'">
+                </option>
+              </select>
+            </label>
+            <button type="submit">Add</button>
+          </form>
+        </div>
+        <hr />
+
+        <h3>Items</h3>
+        <ol>
+          <li th:each="it : ${items}">
+            <span
+              th:text="${trackMap[it.trackId] != null ? trackMap[it.trackId].title : 'Unknown track #' + it.trackId}">
+              Track title
+            </span>
+            <small th:if="${trackMap[it.trackId] != null}" th:text="' by ' + ${trackMap[it.trackId].artist}">
+            </small>
+            <small th:if="${trackMap[it.trackId] == null}">(not found)</small>
+            <div th:if="${trackMap[it.trackId] != null and !#strings.isEmpty(trackMap[it.trackId].filePath)}">
+              <audio controls th:src="@{${trackMap[it.trackId].filePath}}"></audio>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

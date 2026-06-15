@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}" />
+    <style>
+      .login-card {
+        max-width: 420px;
+        margin: 10vh auto;
+        padding: 20px;
+        background: #2b2b2b;
+        border-radius: 10px;
+      }
+      .login-card h2 {
+        margin: 0 0 10px;
+      }
+      .login-card label {
+        display: block;
+        margin: 10px 0 6px;
+      }
+      .login-card input[type="text"],
+      .login-card input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #444;
+        background: #1f1f1f;
+        color: #fff;
+      }
+      .login-card button {
+        margin-top: 12px;
+        padding: 8px 14px;
+      }
+      .hint {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card">
+      <h2>Select User</h2>
+      <p class="hint">
+        Enter your username and password to join the chat. Multiple users can be
+        logged in at the same time on different browser tabs/windows.
+      </p>
+
+      <form method="post" th:action="@{/login}">
+        <input
+          type="hidden"
+          name="next"
+          th:value="${next != null ? next : '/chat'}"
+        />
+
+        <label for="username">Username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          placeholder="e.g. you, friend"
+          required
+        />
+
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="password"
+          required
+        />
+
+        <button type="submit">Join Chat</button>
+
+        <div
+          class="hint"
+          th:if="${param.error}"
+          style="margin-top: 8px; color: #ff6b6b"
+        >
+          Invalid username or password.
+        </div>
+        <div
+          class="hint"
+          th:if="${param.logout}"
+          style="margin-top: 8px; color: #8bc34a"
+        >
+          You have been logged out.
+        </div>
+      </form>
+
+      <div class="hint" style="margin-top: 15px; font-size: 11px; opacity: 0.7">
+        💡 <strong>Multi-user tip:</strong> Open multiple browser tabs/windows
+        with different usernames to simulate multiple users chatting.
+      </div>
+    </div>
+  </body>
+</html>

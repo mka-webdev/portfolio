@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Week 8 Chat</title>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}" />
+  <script>
+    // Scroll to bottom of messages when page loads
+    window.addEventListener("load", function () {
+      const chatContainer = document.querySelector(".chat-padding");
+      if (chatContainer) {
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <div class="screen">
+    <!-- Screen section containing navigation, and who you have recently chatted with -->
+    <div class="conversations">
+      <!-- Padding for a tidier look -->
+      <div class="conversations-padding">
+        <!-- Signed in as -->
+        <div style="
+            margin: 10px 0;
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 12px;
+          ">👤
+          <strong th:text="${currentUser}" class="body" style="color: black">Current User</strong>
+        </div>
+
+        <!-- Search form for any user -->
+        <form method="get" th:action="@{/chat}" style="display: flex; align-items: center; gap: 5px;">
+          <input type="text" name="with" placeholder="Search for user" th:value="${with}"
+            style="flex: 1; padding: 10px; min-width: 10px;" />
+          <button type="submit">Open</button>
+        </form>
+
+        <!-- Navigation to Audio/Playlists/Logout -->
+        <div style="display: flex; justify-content: space-evenly; padding: 5px, 0px, 0px, 0px; margin: 5px;">
+          <a th:href="@{/audio}">Audio</a> |
+          <a th:href="@{/playlists}">Playlists</a> |
+          <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit"
+              style="all: unset; font-family: inherit; font-size: inherit; color: inherit; text-decoration: underline; cursor: pointer;">
+              Switch User
+            </button>
+          </form>
+        </div>
+
+        <hr />
+
+        <!-- Who have you talked with recently -->
+        <h4 style="padding: 10; margin: 10;">Recent Chats</h4>
+        <ul>
+          <li th:each="partner : ${chatPartners}">
+            <form th:action="@{/chat}" method="get">
+              <input type="hidden" name="with" th:value="${partner}" />
+              <button type="submit" th:text="${partner}"></button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Screen section containing messages, message-bar and so on -->
+    <div class="chat">
+      <div class="chat-padding">
+        <!-- Who am I chatting with -->
+        <div class="header">
+          <h2 th:text="'Chat with ' + ${with}">Chat</h2>
+        </div>
+        <!-- Share a playlist using a dropdown of real playlists -->
+        <div style="flex: 1">
+          <!-- No playlists exist yet -->
+          <div th:if="${#lists.isEmpty(availablePlaylists)}">
+            <em>No playlists yet.</em>
+            <a th:href="@{/playlists}" style="margin-left: 8px">Create one</a>
+          </div>
+          <!-- List exists -->
+          <div th:if="${!#lists.isEmpty(availablePlaylists)}" style="display: flex; align-items: center; gap: 10px">
+            <!-- Form for selecting playlist -->
+            <form method="post" th:action="@{/chat/share-playlist}"
+              style="display: flex; align-items: center; gap: 8px">
+              <input type="hidden" name="to" th:value="${with}" />
+              <select name="playlistId" required>
+                <option class="selector" value="" disabled selected>
+                  Select a playlist…
+                </option>
+                <option th:each="p : ${availablePlaylists}" th:value="${p.id}"
+                  th:text="${p.name} + ' (#' + ${p.id} + ')'">
+                  A Playlist
+                </option>
+              </select>
+              <button type="submit">Share playlist</button>
+            </form>
+            <!-- Does uhhh managy stuff -->
+            <a th:href="@{/playlists}" style="text-decoration: none">
+              <button type="button">Manage</button>
+            </a>
+          </div>
+        </div>
+
+        <!-- Renders each message stored in the database -->
+        <div th:each="m : ${messages}">
+          <div th:class="${m.sender == currentUser} ? 'row-right' : 'row-left'">
+            <small class="time" th:if="${m.sender == currentUser}"
+              th:text="${#temporals.format(m.sentAt, 'HH:mm')}">time</small>
+            <span th:class="${m.sender == currentUser} ? 'my-bubble' : 'their-bubble'">
+              <!-- Render text with an embedded /playlists/ link and optional label after '|' -->
+              <span th:if="${#strings.contains(m.body,'/playlists/')}">
+                <span th:text="${#strings.substring(m.body, 0, #strings.indexOf(m.body,'/playlists/'))}">prefix</span>
+                <a th:href="${#strings.contains(m.body,'|') ?
+                          #strings.substring(m.body, #strings.indexOf(m.body,'/playlists/'), #strings.indexOf(m.body,'|'))
+                          : #strings.substring(m.body, #strings.indexOf(m.body,'/playlists/'))}" th:text="${#strings.contains(m.body,'|') ? #strings.substring(m.body, #strings.indexOf(m.body,'|')+1)
+                          : #strings.substring(m.body, #strings.indexOf(m.body,'/playlists/'))}">
+                  link
+                </a>
+              </span>
+              <span th:unless="${#strings.contains(m.body,'/playlists/')}" th:text="${m.body}">message</span>
+            </span>
+            <small class="time" th:if="${m.sender != currentUser}"
+              th:text="${#temporals.format(m.sentAt, 'HH:mm:ss')}">time</small>
+          </div>
+        </div>
+        <!-- If there are no messages display message -->
+        <div th:if="${#lists.isEmpty(messages)}">
+          <div style="text-align: center; padding: 20px; opacity: 0.7">
+            <em>No messages yet. Say hi!</em>
+          </div>
+        </div>
+
+        <!-- Message bar form and send message button -->
+        <div class="row">
+          <form class="message-bar" method="post" th:action="@{/chat/send}">
+            <input type="hidden" name="to" th:value="${with}" />
+            <input type="text" name="text" placeholder="Type a message…" autocomplete="off" />
+            <button type="submit" style="min-width: 80px;">
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

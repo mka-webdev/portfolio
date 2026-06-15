@@ -20,112 +20,116 @@ const githubBase = 'https://github.com/mkawebdev/portfolio/tree/main';
 
 module.exports = [
   {
-    slug: 'student-grade-system',
-    title: 'Student Grade System',
-    type: 'Software Design and Development Unit',
-    summary: 'Java-based student grade management system developed as part of the Software Design and Development unit. This project can support testing documentation around validation, application logic, and expected grade calculation behaviour.',
-    gallery: placeholderGallery,
-    technologies: ['Java', 'JavaFX'],
-    stack: [
-      {
-        label: 'Team',
-        value: 'Individual project'
-      },
-      {
-        label: 'Programming language',
-        value: 'Java'
-      },
-      {
-        label: 'User interface',
-        value: 'JavaFX'
-      },
-      {
-        label: 'Testing / evidence',
-        value: 'Manual test scenarios, validation checks'
-      }
-    ],
-    status: 'Documentation draft',
-    githubReadme: `${githubBase}/software-development-projects/student-grade-system`
-  },
-  {
     slug: 'whiskey-product-information-system',
     title: 'Whiskey Product Information System',
     type: 'Software Design and Development Unit',
-    summary: 'Product information system developed for the Software Design and Development unit. This project can support testing documentation around product data, UI flow, search or filtering behaviour, and data handling.',
+    summary: 'JavaFX product information system developed for the Software Design and Development unit. The project includes database interaction, validation logic, product query behaviour, and existing JUnit 5 testing evidence.',
     gallery: placeholderGallery,
-    technologies: ['Java', 'JavaFX'],
+    technologies: ['Java', 'JavaFX', 'MySQL', 'JUnit 5'],
     stack: [
       {
-        label: 'Team',
-        value: 'Individual project'
+        label: 'Project type',
+        value: 'Individual university project'
+      },
+      {
+        label: 'My contribution',
+        value: 'Individual implementation, validation logic, database interaction, and testing evidence documentation'
       },
       {
         label: 'Programming language',
         value: 'Java'
       },
       {
-        label: 'User interface',
+        label: 'Application framework',
         value: 'JavaFX'
       },
       {
-        label: 'Testing / evidence',
-        value: 'Manual test scenarios, UI flow checks, data handling checks'
+        label: 'User interface',
+        value: 'FXML and JavaFX views'
+      },
+      {
+        label: 'Data storage',
+        value: 'MySQL database accessed with JDBC'
+      },
+      {
+        label: 'Build tool',
+        value: 'Maven'
+      },
+      {
+        label: 'Testing suite',
+        value: 'JUnit 5'
+      },
+      {
+        label: 'Testing focus',
+        value: 'Validation logic, product data handling, login/password validation, and record navigation behaviour'
+      },
+      {
+        label: 'Evidence',
+        value: 'Runnable application screenshots and JUnit 5 test result screenshots'
       }
     ],
     status: 'Documentation draft',
     githubReadme: `${githubBase}/software-development-projects/whiskey-product-information-system`
   },
   {
-    slug: 'social-media-playlist-app',
-    title: 'Social Media Playlist App',
+    slug: 'audio-track-chat-app',
+    title: 'Audio Track Chat App',
     type: 'Enterprise Software Development Unit',
-    summary: 'Enterprise Software Development team project using the iTunes Search API. The app supported track search, authenticated users, playlist or list creation, playlist sharing, and an internal chat feature. My main contribution was developing the JUnit 5 and Mockito test suite, which supported the testing evidence used in project documentation.',
+    summary: 'Enterprise Software Development team project based on a Twitter/X and Spotify-style brief. The app used the iTunes Search API and supported authenticated users, friend chat, audio track search, track sharing, playlists/lists, ratings, and suggestions. My main contribution was developing the JUnit 5 and Mockito test suite, which supported the testing evidence used in project documentation.',
     gallery: placeholderGallery,
     technologies: ['Spring Boot', 'Java', 'Thymeleaf', 'Spring Data JPA', 'JUnit 5', 'Mockito', 'iTunes Search API'],
     stack: [
-    {
-      label: 'Team',
-      value: 'Five-member team: project Manager (myself), quality assurance Manager, technical Manager, and two developers'
-    },
-    {
-      label: 'My contribution',
-      value: 'Project management and development of the JUnit 5 and Mockito test suite'
-    },
-    {
-      label: 'Programming language',
-      value: 'Java'
-    },
-    {
-      label: 'Framework',
-      value: 'Spring Boot'
-    },
-    {
-      label: 'Templating engine',
-      value: 'Thymeleaf'
-    },
-    {
-      label: 'Persistence',
-      value: 'Spring Data JPA'
-    },
-    {
-      label: 'External API',
-      value: 'iTunes Search API'
-    },
-    {
-      label: 'Testing suite / methodology',
-      value: 'JUnit 5, Mockito, unit testing, service-layer testing, mocked dependencies'
-    },
-    {
-      label: 'Testing evidence',
-      value: 'Automated test suite used to support QA documentation'
-    },
-    {
-      label: 'Repository',
-      value: 'Original team repository private; public portfolio evidence provided'
-    }
-  ],
+      {
+        label: 'Project type',
+        value: 'Five-member university team project'
+      },
+      {
+        label: 'My contribution',
+        value: 'Project management and development of the JUnit 5 and Mockito test suite'
+      },
+      {
+        label: 'Programming language',
+        value: 'Java'
+      },
+      {
+        label: 'Application framework',
+        value: 'Spring Boot'
+      },
+      {
+        label: 'User interface',
+        value: 'Thymeleaf templates'
+      },
+      {
+        label: 'Data storage',
+        value: 'Spring Data JPA'
+      },
+      {
+        label: 'External service',
+        value: 'iTunes Search API'
+      },
+      {
+        label: 'Build tool',
+        value: 'Maven'
+      },
+      {
+        label: 'Testing suite',
+        value: 'JUnit 5 and Mockito'
+      },
+      {
+        label: 'Testing focus',
+        value: 'Unit testing, service-layer testing, and mocked dependencies'
+      },
+      {
+        label: 'Evidence',
+        value: 'Automated test suite used to support QA documentation'
+      },
+      {
+        label: 'Repository status',
+        value: 'Original team repository private; public portfolio evidence provided'
+      }
+    ],
     status: 'Documentation draft',
-    githubReadme: `${githubBase}/software-development-projects/social-media-playlist-app`
+    githubReadme: `${githubBase}/software-development-projects/audio-track-chat-app`
   },
   {
     slug: 'nuscan-android-app',
@@ -136,28 +140,48 @@ module.exports = [
     technologies: ['Android', 'Java', 'Room', 'SQLite'],
     stack: [
       {
-        label: 'Team',
-        value: 'Individual project'
+        label: 'Project type',
+        value: 'Individual university project'
+      },
+      {
+        label: 'My contribution',
+        value: 'Individual Android app implementation, local data handling, store features, map integration, email sharing, and remote JSON import'
       },
       {
         label: 'Programming language',
         value: 'Java'
       },
       {
-        label: 'Platform',
+        label: 'Application framework',
         value: 'Android'
       },
       {
-        label: 'Database',
-        value: 'Room, SQLite'
-      },
-      {
         label: 'User interface',
-        value: 'XML layouts'
+        value: 'XML layouts and Android fragments'
       },
       {
-        label: 'Testing / evidence',
-        value: 'Mobile test scenarios, permissions checks, intent checks, data storage checks'
+        label: 'Data storage',
+        value: 'Room and SQLite'
+      },
+      {
+        label: 'External service',
+        value: 'Remote JSON import from GitHub-hosted data'
+      },
+      {
+        label: 'Build tool',
+        value: 'Gradle'
+      },
+      {
+        label: 'Testing suite',
+        value: 'To be added'
+      },
+      {
+        label: 'Testing focus',
+        value: 'Permissions, intents, data storage, search behaviour, map behaviour, and import behaviour'
+      },
+      {
+        label: 'Evidence',
+        value: 'Application screenshots and mobile feature documentation'
       }
     ],
     status: 'Documentation draft',
@@ -167,40 +191,63 @@ module.exports = [
     slug: 'online-accessibility-governance-platform',
     title: 'Online Accessibility Governance Platform',
     type: 'Capstone Project',
-    summary: 'Team capstone project focused on accessibility governance, scan evidence, remediation guidance, documentation, and final delivery. My contribution was centred on project framing, requirements, governance thinking, documentation, coordination, and aligning artefacts with the platform purpose.',
-    gallery: placeholderGallery,
-    technologies: ['Spring Boot', 'Java', 'Playwright', 'axe-core', 'SQLite', 'Thymeleaf'],
+    summary: 'Team capstone project focused on accessibility governance, scan evidence, AI-supported remediation guidance, documentation, and final delivery. The platform used automated accessibility scanning to identify WCAG-related issues and connected scan output with AI-generated remediation guidance. My contribution was centred on project framing, requirements, governance thinking, documentation, coordination, and aligning artefacts with the platform purpose.', gallery: placeholderGallery,
+    technologies: ['Spring Boot', 'Java', 'Thymeleaf', 'Node.js', 'Playwright', 'axe-core', 'SQLite'],
     stack: [
       {
-        label: 'Team',
-        value: 'Team capstone project'
+        label: 'Project type',
+        value: 'Five-member capstone team project'
+      },
+      {
+        label: 'My contribution',
+        value: 'Project framing, requirements, documentation, coordination, accessibility governance thinking, scanning module contribution, and presentation alignment'
       },
       {
         label: 'Programming language',
-        value: 'Java'
+        value: 'Java and JavaScript'
       },
       {
-        label: 'Framework',
+        label: 'Application framework',
         value: 'Spring Boot'
       },
       {
-        label: 'Templating engine',
-        value: 'Thymeleaf'
+        label: 'User interface',
+        value: 'Thymeleaf templates'
       },
       {
-        label: 'Accessibility scanning',
-        value: 'Playwright, axe-core'
-      },
-      {
-        label: 'Database',
+        label: 'Data storage',
         value: 'SQLite'
       },
       {
-        label: 'Testing / evidence',
-        value: 'Accessibility scan evidence, requirements documentation, governance documentation'
+        label: 'AI Integration',
+        value: 'AI-supported remediation guidance generated from accessibility scan results'
+      },
+      {
+        label: 'Build tool',
+        value: 'Maven and npm'
+      },
+      {
+        label: 'Testing suite',
+        value: 'JUnit 5 and Mockito'
+      },
+      {
+        label: 'Accessibility scanning tools',
+        value: 'Playwright and axe-core'
+      },
+      {
+        label: 'Testing focus',
+        value: 'Unit testing, controller/service testing, accessibility scan evidence, WCAG-related findings, and AI-supported remediation guidance output'
+      },
+      {
+        label: 'Evidence',
+        value: 'Project documentation, scan evidence, testing evidence, presentation artefacts, public repository links, and Docker image links'
+      },
+      {
+        label: 'Role boundary',
+        value: 'QA and testing responsibilities were led by the team QA / Testing role'
       }
     ],
-    status: 'Documentation draft',
+    status: 'On standby',
     githubReadme: `${githubBase}/software-development-projects/online-accessibility-governance-platform`
   },
   {
@@ -212,32 +259,48 @@ module.exports = [
     technologies: ['Postman', 'JMeter', 'Selenium', 'Katalon', 'SQL'],
     stack: [
       {
-        label: 'Team',
+        label: 'Project type',
         value: 'Individual training portfolio'
       },
       {
-        label: 'Testing approach',
-        value: 'Manual testing, test scenarios, test cases, defect reporting'
+        label: 'My contribution',
+        value: 'Individual testing artefact creation, tool practice, documentation, and evidence collection'
       },
       {
-        label: 'API testing',
-        value: 'Postman'
+        label: 'Programming language',
+        value: 'Not applicable'
       },
       {
-        label: 'Performance testing',
-        value: 'JMeter'
+        label: 'Application framework',
+        value: 'Not applicable'
       },
       {
-        label: 'UI automation',
-        value: 'Selenium, Katalon'
+        label: 'User interface',
+        value: 'Not applicable'
       },
       {
-        label: 'Database checks',
-        value: 'SQL'
+        label: 'Data storage',
+        value: 'SQL practice and database checks'
       },
       {
-        label: 'Accessibility testing',
-        value: 'Accessibility defect examples, WCAG-based observations'
+        label: 'External service',
+        value: 'API testing practice using Postman'
+      },
+      {
+        label: 'Build tool',
+        value: 'Not applicable'
+      },
+      {
+        label: 'Testing suite',
+        value: 'Postman, JMeter, Selenium, Katalon, SQL, and accessibility testing tools'
+      },
+      {
+        label: 'Testing focus',
+        value: 'Manual testing, API testing, performance testing, UI automation, database checks, defect reporting, and accessibility observations'
+      },
+      {
+        label: 'Evidence',
+        value: 'Testing artefacts, screenshots, defect reports, tool outputs, and documentation'
       }
     ],
     status: 'In progress',

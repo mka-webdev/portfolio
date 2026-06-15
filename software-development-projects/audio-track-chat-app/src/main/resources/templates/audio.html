@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Audio</title>
+  <link rel="stylesheet" th:href="@{/styles/styles.css}" />
+</head>
+
+<body>
+  <div class="screen">
+    <!-- Left sidebar -->
+    <div class="conversations">
+      <div class="conversations-padding">
+        <div style="
+            margin: 10px 0;
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-size: 12px;
+          ">👤
+          <strong th:text="${currentUser}" class="body" style="color: black">Current User</strong>
+        </div>
+        <div style="display: flex; justify-content: space-evenly; padding: 5px, 0px, 0px, 0px; margin: 5px;">
+          <a th:href="@{/chat}">Chat</a> |
+          <a th:href="@{/playlists}">Playlists</a> |
+          <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit"
+              style="all: unset; font-family: inherit; font-size: inherit; color: inherit; text-decoration: underline; cursor: pointer;">
+              Switch User
+            </button>
+          </form>
+        </div>
+        <hr />
+        <p>
+          <small>Place MP3s under <code>src/main/resources/static/music</code> and
+            store <code>/music/…</code> in DB.</small>
+        </p>
+      </div>
+    </div>
+
+    <!-- Main pane -->
+    <div class="chat">
+      <div class="chat-padding">
+        <div class="header">
+          <h2>Audio Library</h2>
+        </div>
+        <hr />
+
+        <!-- Form to add metadata row for an existing static file -->
+        <details>
+          <summary style="
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 10px 0;
+                user-select: none;
+              ">
+            ➕ Add New Track
+          </summary>
+          <div style="
+                margin: 15px 0;
+                padding: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+              ">
+            <form method="post" th:action="@{/audio/addMeta}">
+              <label>Title<br />
+                <input type="text" name="title" placeholder="Track Name" required /> </label><br />
+
+              <label>Artist<br />
+                <input type="text" name="artist" placeholder="Track Artist" required /> </label><br />
+
+              <label>Genre<br />
+                <input type="text" name="genre" placeholder="e.g. Pop, Jazz" /> </label><br />
+
+              <label>Content type<br />
+                <input type="text" name="contentType" value="audio/mpeg" required /> </label><br />
+
+              <label>Duration (minutes)<br />
+                <input type="number" step="0.01" name="duration" placeholder="e.g. 3.01" /> </label><br />
+
+              <label>File size (bytes)<br />
+                <input type="number" name="fileSize" placeholder="optional" /> </label><br />
+
+              <label>File path<br />
+                <input type="text" name="filePath" placeholder="eg. /music/demo1.mp3" required /> </label><br />
+
+              <button type="submit">Add Track</button>
+            </form>
+          </div>
+        </details>
+
+        <hr />
+        <h3>Search Filters</h3>
+        <div class="filter-container">
+          <form method="get" th:action="@{/audio}">
+            <div style="display: flex; gap: 20px; align-items: center">
+              <div>
+                <label>
+                  <strong>Favourite Artist</strong>
+                  <select name="favouriteArtist" style="margin-left: 8px">
+                    <option value="">-- Any --</option>
+                    <option th:each="artist : ${favouriteArtistNames}" th:value="${artist}" th:text="${artist}"
+                      th:selected="${artist == param.favouriteArtist}"></option>
+                  </select>
+                </label>
+              </div>
+
+              <div>
+                <label style="display: flex; align-items: center">
+                  <input type="checkbox" name="showFavourites" value="true" style="margin-right: 8px"
+                    th:checked="${param.showFavourites}" />
+                  <strong>Show Favourites</strong>
+                </label>
+              </div>
+
+              <div>
+                <label>
+                  <strong>Rating</strong>
+                  <select name="rating" style="margin-left: 8px">
+                    <option value="">-- Any --</option>
+                    <option th:each="r : ${#numbers.sequence(0, 5)}" th:value="${r}"
+                      th:text="${r + ' ' + (#strings.repeat('★', r))}" th:selected="${r == param.rating}"></option>
+                  </select>
+                </label>
+              </div>
+
+              <div>
+                <button type="submit">Apply Filters</button>
+                <a th:href="@{/audio}" class="button" style="margin-left: 8px">Reset</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <hr />
+        <!-- iTunes Search Section -->
+        <div class="itunes-search-section">
+          <h3>🎵 Search iTunes</h3>
+          <form id="itunesSearchForm" method="get" th:action="@{/audio}">
+            <div class="search-inputs">
+              <div class="input-group">
+                <label>Song Title</label>
+                <input type="text" id="songQueryInput" name="songQuery" th:value="${songQuery}"
+                  placeholder="Search by song title..." />
+              </div>
+              <div class="input-group">
+                <label>Artist</label>
+                <input type="text" id="artistQueryInput" name="artistQuery" th:value="${artistQuery}"
+                  placeholder="Search by artist..." />
+              </div>
+              <div class="button-group">
+                <button type="submit" class="btn-primary">
+                  Search iTunes
+                </button>
+                <button type="button" onclick="clearSearch()" class="btn-secondary">
+                  Clear
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <script>
+          function clearSearch() {
+            document.getElementById("songQueryInput").value = "";
+            document.getElementById("artistQueryInput").value = "";
+            window.location.href = "/audio";
+          }
+        </script>
+
+        <small>Tip: Search by song title, artist, or both. At least one field must be filled.</small>
+        
+        <!-- iTunes Search Results with Thumbnails - ONLY HERE -->
+        <div th:if="${searchResults != null and !searchResults.empty}">
+          <h4>iTunes Search Results<small th:text="'(' + ${searchResults.size()} + ' results)'"></small></h4>
+          
+          <div class="search-results">
+            <div th:each="result : ${searchResults}" class="result-card">
+              <!-- Artwork/Thumbnail -->
+              <div class="artwork-container">
+                <img th:if="${result.artworkUrl != null}" th:src="${result.artworkUrl}" th:alt="${result.title}"
+                  class="artwork-img"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="artwork-placeholder" style="display: none">🎵</div>
+              </div>
+
+              <!-- Track Info -->
+              <div class="track-info">
+                <strong th:text="${result.title}">Track Title</strong>
+                <em th:text="${result.artist}">Artist</em>
+                <span th:text="${result.genre}" class="genre">Genre</span>
+              </div>
+
+              <!-- Audio Preview -->
+              <div th:if="${result.filePath != null}" class="audio-preview">
+                <audio controls th:src="${result.filePath}">
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
+
+              <!-- Add to Library Button -->
+              <form method="post" th:action="@{/audio/itunes/add}">
+                <input type="hidden" name="title" th:value="${result.title}" />
+                <input type="hidden" name="artist" th:value="${result.artist}" />
+                <input type="hidden" name="genre" th:value="${result.genre}" />
+                <input type="hidden" name="filePath" th:value="${result.filePath}" />
+                <input type="hidden" name="duration" th:value="${result.duration}" />
+                <input type="hidden" name="artworkUrl" th:value="${result.artworkUrl}" />
+                <button type="submit" class="btn-add">➕ Add to Library</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- No results message -->
+        <div
+          th:if="${((songQuery != null and !songQuery.empty) or (artistQuery != null and !artistQuery.empty)) and searchResults.empty}"
+          style="
+              margin: 15px 0;
+              padding: 10px;
+              background: #fff3f3;
+              border: 1px solid #ffdddd;
+              border-radius: 4px;
+              color: #d32f2f;
+            ">
+          No results found for your search criteria.
+        </div>
+
+        <hr />
+        <h3>Your Library</h3>
+        <div th:if="${#lists.isEmpty(tracks)}" style="color: #ff6b6b; font-weight: bold; margin-bottom: 20px">
+          No results found. Try adjusting the filters above.
+        </div>
+        <div th:if="${!#lists.isEmpty(tracks)}">
+          <table>
+            <thead>
+              <!-- ✅ REMOVED Artwork column -->
+              <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Audio</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="t : ${tracks}">
+                <!-- ✅ REMOVED Artwork column -->
+                <td th:text="${t.title}">Title</td>
+                <td>
+                  <span th:text="${t.artist}">Artist</span>
+                  <!-- Toggle favourite ARTIST -->
+                  <form th:action="@{/audio/artist/favourite}" method="post" style="display: inline; margin-left: 8px">
+                    <input type="hidden" name="artist" th:value="${t.artist}" />
+                    <button type="submit"
+                      th:text="${favouriteArtistNames != null and favouriteArtistNames.contains(t.artist) ? '💖' : '🤍'}"
+                      title="Toggle favourite artist" style="
+                          border: none;
+                          background: none;
+                          font-size: 14px;
+                          cursor: pointer;
+                        "></button>
+                  </form>
+                </td>
+                <td>
+                  <div th:if="${!#strings.isEmpty(t.filePath)}">
+                    <audio controls th:src="@{${t.filePath}}">
+                      Your browser does not support audio.
+                    </audio>
+                  </div>
+                  <div th:if="${#strings.isEmpty(t.filePath)}">
+                    <em>no file path set</em>
+                  </div>
+                </td>
+                <td>
+                  <!-- Toggle favourite TRACK -->
+                  <form th:action="@{/audio/{id}/favourite(id=${t.id})}" method="post" style="display: inline">
+                    <button type="submit"
+                      th:text="${favouritesByTrackId != null and favouritesByTrackId.contains(t.id) ? '❤' : '♡'}"
+                      title="Toggle favourite"></button>
+                  </form>
+
+                  <!-- Rate track -->
+                  <form th:action="@{/audio/{id}/rate(id=${t.id})}" method="post" style="display: inline">
+                    <select name="stars" required>
+                      <option value="" disabled th:selected="${myRatings == null or !myRatings.containsKey(t.id)}">
+                        Select rating…
+                      </option>
+                      <option value="0" th:selected="${myRatings != null and myRatings[t.id] == 0}">
+                        0 ★
+                      </option>
+                      <option value="1" th:selected="${myRatings != null and myRatings[t.id] == 1}">
+                        ★
+                      </option>
+                      <option value="2" th:selected="${myRatings != null and myRatings[t.id] == 2}">
+                        ★★
+                      </option>
+                      <option value="3" th:selected="${myRatings != null and myRatings[t.id] == 3}">
+                        ★★★
+                      </option>
+                      <option value="4" th:selected="${myRatings != null and myRatings[t.id] == 4}">
+                        ★★★★
+                      </option>
+                      <option value="5" th:selected="${myRatings != null and myRatings[t.id] == 5}">
+                        ★★★★★
+                      </option>
+                    </select>
+                    <button type="submit">Rate</button>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

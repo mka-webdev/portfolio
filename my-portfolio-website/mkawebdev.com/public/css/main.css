@@ -43,12 +43,15 @@ p {
   max-width: 72ch;
 }
 
-a {
-  color: var(--site-accent-text);
+a,
+a:visited {
+  color: var(--site-text);
+  text-decoration: none;
 }
 
-a:hover {
-  color: var(--site-text);
+a:hover,
+a:focus {
+  color: var(--site-accent-text);
 }
 
 
@@ -242,6 +245,25 @@ main.container,
   font-weight: 700;
 }
 
+.certificate-link,
+.certificate-link:visited {
+  display: inline-block;
+  margin-top: 0.35rem;
+  color: var(--site-text);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+}
+
+.certificate-link:hover,
+.certificate-link:focus {
+  color: var(--site-accent-text);
+  text-decoration-thickness: 0.12em;
+}
+
 @media (max-width: 767.98px) {
   .about-intro {
     grid-template-columns: 1fr;
@@ -278,10 +300,10 @@ main.container,
   text-decoration: none;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: var(--site-accent-dark);
-  text-decoration: underline;
-  text-underline-offset: 0.35em;
+  text-decoration: none;
 }
 
 .nav-link.active {
@@ -478,22 +500,46 @@ main.container,
    Project detail links
 ================================ */
 
-.project-repo-link a {
+.project-repo-link {
+  margin-bottom: 0;
+}
+
+.project-repo-link a,
+.project-repo-link a:visited {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
+  gap: 0.75rem;
+  color: var(--site-text);
+  font-weight: 700;
   text-decoration: none;
 }
 
-.project-repo-link a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
+.project-repo-link i {
+  font-size: 2rem;
+  line-height: 1;
 }
 
-.project-repo-link i {
-  color: var(--brand-github);
-  font-size: 1.25rem;
+.project-repo-link span:not(.visually-hidden) {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+}
+
+.project-repo-link a:hover span:not(.visually-hidden),
+.project-repo-link a:focus span:not(.visually-hidden) {
+  color: var(--site-accent-text);
+  text-decoration-thickness: 0.12em;
+}
+
+.project-repo-link a:hover i,
+.project-repo-link a:focus i {
+  color: var(--site-text);
+}
+
+.project-repo-link a:hover span:not(.visually-hidden),
+.project-repo-link a:focus span:not(.visually-hidden) {
+  text-decoration-thickness: 0.12em;
 }
 
 
@@ -547,10 +593,10 @@ main.container,
   text-decoration: none;
 }
 
-.footer-name a:hover {
+.footer-name a:hover,
+.footer-name a:focus {
   color: var(--site-accent-dark);
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
+  text-decoration: none;
 }
 
 .footer-role {
@@ -584,9 +630,10 @@ main.container,
   text-decoration: none;
 }
 
-.footer-links a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.3em;
+.footer-links a:hover,
+.footer-links a:focus {
+  color: var(--site-text);
+  text-decoration: none;
 }
 
 .footer-socials ul {
