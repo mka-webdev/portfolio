@@ -8,47 +8,103 @@
 <body>
   <%- include('../partials/navbar') %>
 
-    <main id="main-content" class="container page-main">
-      <h1>Projects</h1>
-      <p class="lead mb-4">Selected development and testing projects that will become full portfolio case studies.</p>
+  <main id="main-content" class="container page-main projects-page">
+    <h1>Projects</h1>
+
+    <p class="lead mb-4">
+      Selected Software Tester / QA project areas and university projects that support my current portfolio direction.
+    </p>
+
+    <% const universityProjects = projects.filter(project => project.category === 'uni'); %>
+
+    <section class="project-section" aria-labelledby="qa-projects-heading">
+      <div class="section-heading">
+        <h2 id="qa-projects-heading">Software Tester / QA Projects</h2>
+        <p>
+          Placeholder areas for future Tester / QA artefacts. These will be developed as I apply software testing
+          knowledge to apps, websites, APIs, databases, and selected software projects.
+        </p>
+      </div>
 
       <div class="row g-4">
-        <% projects.forEach(project=> { %>
+        <% testingAreas.forEach(area => { %>
+          <div class="col-md-6 col-lg-4">
+            <article class="info-card h-100">
+              <h3 class="h4">
+                <%= area.title %>
+              </h3>
+
+              <p>
+                <%= area.summary %>
+              </p>
+
+              <ul class="tag-list" aria-label="Skills covered in <%= area.title %>">
+                <% area.skills.forEach(skill => { %>
+                  <li>
+                    <%= skill %>
+                  </li>
+                <% }) %>
+              </ul>
+
+              <p class="small text-secondary mt-3 mb-0">
+                Artefacts to be added
+              </p>
+            </article>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="project-section" aria-labelledby="university-projects-heading">
+      <div class="section-heading">
+        <h2 id="university-projects-heading">University Projects</h2>
+        <p>
+          Academic and capstone projects showing my software development foundation across Java, Spring Boot, Android,
+          web, database, mobile, and team-based project work.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <% universityProjects.forEach(project => { %>
           <div class="col-md-6 col-lg-4">
             <article class="info-card h-100">
               <p class="small text-secondary mb-2">
                 <%= project.type %>
               </p>
-              <h2 class="h4">
+
+              <h3 class="h4">
                 <%= project.title %>
-              </h2>
+              </h3>
+
               <p>
                 <%= project.summary %>
               </p>
 
               <ul class="tag-list" aria-label="Technologies used for <%= project.title %>">
-                <% project.technologies.forEach(tech=> { %>
+                <% project.technologies.forEach(tech => { %>
                   <li>
                     <%= tech %>
                   </li>
-                  <% }) %>
+                <% }) %>
               </ul>
 
               <p class="small text-secondary mt-3 mb-0">
                 <%= project.status %>
               </p>
+
               <a class="btn btn-outline-primary mt-3" href="/projects/<%= project.slug %>">
-                Project Details
+                Project details
               </a>
             </article>
           </div>
-          <% }) %>
+        <% }) %>
       </div>
-    </main>
+    </section>
+  </main>
 
-    <%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

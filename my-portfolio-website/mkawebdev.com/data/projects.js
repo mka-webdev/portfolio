@@ -21,6 +21,7 @@ const githubBase = 'https://github.com/mkawebdev/portfolio/tree/main';
 module.exports = [
   {
     slug: 'whiskey-product-information-system',
+    category: 'uni',
     title: 'Whiskey Product Information System',
     type: 'Software Design and Development Unit',
     summary: 'JavaFX product information system developed for the Software Design and Development unit. The project includes database interaction, validation logic, product query behaviour, and existing JUnit 5 testing evidence.',
@@ -73,6 +74,7 @@ module.exports = [
   },
   {
     slug: 'audio-track-chat-app',
+    category: 'uni',
     title: 'Audio Track Chat App',
     type: 'Enterprise Software Development Unit',
     summary: 'Enterprise Software Development team project based on a Twitter/X and Spotify-style brief. The app used the iTunes Search API and supported authenticated users, friend chat, audio track search, track sharing, playlists/lists, ratings, and suggestions. My main contribution was developing the JUnit 5 and Mockito test suite, which supported the testing evidence used in project documentation.',
@@ -133,6 +135,7 @@ module.exports = [
   },
   {
     slug: 'nuscan-android-app',
+    category: 'uni',
     title: 'NuScan Android App',
     type: 'Mobile Development Unit',
     summary: 'Local-first Android product and nutrition catalogue app with Room database, tags, stores, map integration, email sharing, and remote JSON import. This project can support mobile testing scenarios around permissions, intents, data storage, and import behaviour.',
@@ -189,6 +192,7 @@ module.exports = [
   },
   {
     slug: 'online-accessibility-governance-platform',
+    category: 'uni',
     title: 'Online Accessibility Governance Platform',
     type: 'Capstone Project',
     summary: 'Team capstone project focused on accessibility governance, scan evidence, AI-supported remediation guidance, documentation, and final delivery. The platform used automated accessibility scanning to identify WCAG-related issues and connected scan output with AI-generated remediation guidance. My contribution was centred on project framing, requirements, governance thinking, documentation, coordination, and aligning artefacts with the platform purpose.', gallery: placeholderGallery,
@@ -249,61 +253,5 @@ module.exports = [
     ],
     status: 'On standby',
     githubReadme: `${githubBase}/software-development-projects/online-accessibility-governance-platform`
-  },
-  {
-    slug: 'software-testing-bootcamp-artefacts',
-    title: 'Software Testing Bootcamp Artefacts',
-    type: 'Roshdy\'s Software Testing Bootcamp',
-    summary: 'Structured testing artefacts covering test scenarios, test cases, defect reports, Postman, JMeter, Selenium, Katalon, SQL, screenshots, and accessibility defect examples.',
-    gallery: placeholderGallery,
-    technologies: ['Postman', 'JMeter', 'Selenium', 'Katalon', 'SQL'],
-    stack: [
-      {
-        label: 'Project type',
-        value: 'Individual training portfolio'
-      },
-      {
-        label: 'My contribution',
-        value: 'Individual testing artefact creation, tool practice, documentation, and evidence collection'
-      },
-      {
-        label: 'Programming language',
-        value: 'Not applicable'
-      },
-      {
-        label: 'Application framework',
-        value: 'Not applicable'
-      },
-      {
-        label: 'User interface',
-        value: 'Not applicable'
-      },
-      {
-        label: 'Data storage',
-        value: 'SQL practice and database checks'
-      },
-      {
-        label: 'External service',
-        value: 'API testing practice using Postman'
-      },
-      {
-        label: 'Build tool',
-        value: 'Not applicable'
-      },
-      {
-        label: 'Testing suite',
-        value: 'Postman, JMeter, Selenium, Katalon, SQL, and accessibility testing tools'
-      },
-      {
-        label: 'Testing focus',
-        value: 'Manual testing, API testing, performance testing, UI automation, database checks, defect reporting, and accessibility observations'
-      },
-      {
-        label: 'Evidence',
-        value: 'Testing artefacts, screenshots, defect reports, tool outputs, and documentation'
-      }
-    ],
-    status: 'In progress',
-    githubReadme: `${githubBase}/testing-portfolio`
   }
 ];

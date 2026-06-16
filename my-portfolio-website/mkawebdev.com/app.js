@@ -43,7 +43,8 @@ app.get('/projects', (req, res) => {
   res.render('pages/projects', {
     title: 'Projects',
     currentPage: 'projects',
-    projects
+    projects,
+    testingAreas
   });
 });
 
@@ -61,14 +62,6 @@ app.get('/projects/:slug', (req, res) => {
     title: project.title,
     currentPage: 'projects',
     project
-  });
-});
-
-app.get('/testing', (req, res) => {
-  res.render('pages/testing', {
-    title: 'Testing',
-    currentPage: 'testing',
-    testingAreas
   });
 });
 
