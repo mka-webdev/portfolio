@@ -72,6 +72,62 @@ module.exports = [
     status: 'Documentation draft',
     githubReadme: `${githubBase}/software-development-projects/whiskey-product-information-system`
   },
+    {
+    slug: 'wisdom-game',
+    category: 'uni',
+    title: 'Wisdom',
+    type: 'Game Development Unit',
+    summary: 'Collaborative Unity/C# 2D game project developed by Team Mmm Mmm Jeans. The project included gameplay programming, puzzle and inventory interaction design, playtesting, feedback analysis, and iterative refinement. My contribution focused on gameplay interaction work, playtesting coordination, feedback analysis, and technical documentation.',
+    gallery: placeholderGallery,
+    technologies: ['Unity', 'C#', 'WebGL', 'Game Design', 'Playtesting'],
+    stack: [
+      {
+        label: 'Project type',
+        value: 'Five-member university team project'
+      },
+      {
+        label: 'My contribution',
+        value: 'Gameplay interaction work, puzzle and inventory interaction design contribution, playtesting coordination, feedback analysis, feedback-driven iteration, and technical documentation'
+      },
+      {
+        label: 'Programming language',
+        value: 'C#'
+      },
+      {
+        label: 'Game engine',
+        value: 'Unity'
+      },
+      {
+        label: 'Build target',
+        value: 'WebGL playable release'
+      },
+      {
+        label: 'Team',
+        value: 'Team Mmm Mmm Jeans'
+      },
+      {
+        label: 'Testing focus',
+        value: 'Playtesting, player feedback collection, usability issues, puzzle clarity, interaction cues, and feedback-driven iteration'
+      },
+      {
+        label: 'Evidence',
+        value: 'Public playable itch.io release and portfolio-safe Markdown documentation'
+      },
+      {
+        label: 'Repository status',
+        value: 'Unity source project not published; public portfolio evidence provided'
+      }
+    ],
+    status: 'Documentation draft',
+    githubReadme: `${githubBase}/game-development-projects/wisdom`,
+    externalLinks: [
+      {
+        label: 'Play on itch.io',
+        url: 'https://mmm-mmm-jeans.itch.io/wisdom',
+        icon: 'fa-solid fa-gamepad'
+      }
+    ]
+  },
   {
     slug: 'audio-track-chat-app',
     category: 'uni',

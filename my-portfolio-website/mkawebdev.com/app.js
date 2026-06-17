@@ -65,6 +65,13 @@ app.get('/projects/:slug', (req, res) => {
   });
 });
 
+app.get('/project-management', (req, res) => {
+  res.render('pages/project-management', {
+    title: 'Project Management',
+    currentPage: 'project-management'
+  });
+});
+
 app.get('/accessibility', (req, res) => {
   res.render('pages/accessibility', {
     title: 'Accessibility',

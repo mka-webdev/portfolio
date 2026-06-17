@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
+    <div class="collapse navbar-collapse justify-content-start" id="mainNavbar">
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link <%= currentPage === 'home' ? 'active' : '' %>" <%=currentPage==='home'
@@ -21,6 +21,12 @@
             ? 'aria-current="page"' : '' %>
             href="/projects">Projects</a>
         </li>        
+
+        <li class="nav-item">
+          <a class="nav-link <%= currentPage === 'project-management' ? 'active' : '' %>" <%=currentPage==='project-management'
+            ? 'aria-current="page"' : '' %>
+            href="/project-management">Project Management</a>
+        </li>    
 
         <li class="nav-item">
           <a class="nav-link <%= currentPage === 'accessibility' ? 'active' : '' %>" <%=currentPage==='accessibility'
