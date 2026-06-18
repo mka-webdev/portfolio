@@ -12,7 +12,7 @@ This summary does not reproduce the full Quality Manager report or present that 
 
 ## Testing Levels
 
-| Testing Level | How it applied in this project | Evidence / Artefacts | My involvement |
+| Testing Level | How it applied in this project | Evidence / Artefacts | My contribution |
 | --- | --- | --- | --- |
 | Unit Testing | Selected application behaviours were tested using automated Java tests. These tests focused on checking specific controller, service, and application behaviours in isolation or near-isolation. | JUnit 5 and Mockito test suite included in the project codebase. | I developed the automated JUnit 5 and Mockito test suite. |
 | Component Integration Testing | During development, team members tested how implemented components worked together before merging or finalising features. This included checking interactions between controllers, services, repositories, security configuration, persistence, and feature logic. | Local testing, branch-based checks, peer review, and working-code validation before integration into the main project. | I contributed as both developer and Project Manager by supporting working-code validation and helping coordinate project progress. |
