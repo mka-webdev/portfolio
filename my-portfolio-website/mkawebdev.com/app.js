@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const projects = require('./data/projects');
 const testingAreas = require('./data/testingAreas');
 const site = require('./data/site');
+const testingSummaries = require('./data/testingSummaries');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -57,11 +58,14 @@ app.get('/projects/:slug', (req, res) => {
       currentPage: 'projects'
     });
   }
-
+  
   res.render('pages/project-detail', {
     title: project.title,
     currentPage: 'projects',
-    project
+    project: {
+      ...project,
+      testingSummary: testingSummaries[project.slug] || null
+    }
   });
 });
 

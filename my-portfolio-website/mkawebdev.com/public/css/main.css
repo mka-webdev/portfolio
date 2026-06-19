@@ -137,6 +137,28 @@ main.container,
   padding: 4rem 0;
 }
 
+/* ===============================
+   Mobile page spacing
+================================ */
+
+@media (max-width: 767.98px) {
+  main.container,
+  .page-main {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .content-section {
+    padding: 3rem 0;
+  }
+}
+
 .text-section {
   margin-bottom: 3rem;
 }
@@ -570,6 +592,155 @@ a.btn-outline-primary:active {
 
   .project-management-table td:first-child {
     width: auto;
+  }
+}
+
+/* ===============================
+   Project testing accordion
+================================ */
+
+.project-testing-section {
+  max-width: 1000px;
+}
+
+.project-testing-section .lead {
+  margin-bottom: 1.5rem;
+}
+
+.project-testing-accordion {
+  max-width: 1000px;
+}
+
+.project-testing-accordion .accordion-item {
+  background: var(--site-surface);
+  border: 1px solid var(--site-border);
+}
+
+.project-testing-accordion .accordion-button {
+  background: var(--site-surface);
+  color: var(--site-text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.project-testing-accordion .accordion-button:not(.collapsed) {
+  background: #f3f5ef;
+  color: var(--site-text);
+  box-shadow: none;
+}
+
+.project-testing-accordion .accordion-button:focus {
+  border-color: var(--site-focus);
+  box-shadow: 0 0 0 0.25rem rgba(31, 41, 51, 0.18);
+}
+
+.testing-summary-item {
+  max-width: 760px;
+  margin-bottom: 1.5rem;
+}
+
+.testing-summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.testing-summary-item h4 {
+  margin-bottom: 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.testing-summary-item p {
+  margin-bottom: 0;
+}
+
+/* ===============================
+   Testing summary table
+================================ */
+
+.project-testing-accordion .accordion-body {
+  padding: 1.25rem;
+  overflow-x: visible;
+}
+
+.testing-summary-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: visible;
+}
+
+.testing-summary-table {
+  width: 100%;
+  margin-bottom: 0;
+  table-layout: fixed;
+  background: var(--site-surface);
+  border: 1px solid var(--site-border);
+}
+
+.testing-summary-table th,
+.testing-summary-table td {
+  padding: 1rem;
+  vertical-align: top;
+  border-color: var(--site-border);
+  line-height: 1.6;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.testing-summary-table thead th {
+  background: #f3f5ef;
+  color: var(--site-text);
+  font-weight: 700;
+}
+
+.testing-summary-table tbody th {
+  color: var(--site-text);
+  font-weight: 700;
+}
+
+.testing-summary-table td {
+  color: var(--site-text);
+}
+
+/* Four-column testing level tables */
+.testing-summary-table th:nth-child(1),
+.testing-summary-table td:nth-child(1) {
+  width: 22%;
+}
+
+.testing-summary-table th:nth-child(2),
+.testing-summary-table td:nth-child(2) {
+  width: 34%;
+}
+
+.testing-summary-table th:nth-child(3),
+.testing-summary-table td:nth-child(3) {
+  width: 24%;
+}
+
+.testing-summary-table th:nth-child(4),
+.testing-summary-table td:nth-child(4) {
+  width: 20%;
+}
+
+@media (max-width: 767.98px) {
+  .project-testing-accordion .accordion-button {
+    padding: 1rem;
+  }
+
+  .project-testing-accordion .accordion-body {
+    padding: 0.85rem;
+  }
+
+  .testing-summary-table {
+    font-size: 0.92rem;
+  }
+
+  .testing-summary-table th,
+  .testing-summary-table td {
+    padding: 0.75rem;
+    line-height: 1.55;
   }
 }
 

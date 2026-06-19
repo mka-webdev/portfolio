@@ -12,43 +12,52 @@
     <h1>Projects</h1>
 
     <p class="lead mb-4">
-      Selected Software Tester / QA project areas and university projects that support my current portfolio direction.
+      Selected software testing, QA, accessibility, and university development projects that support my current portfolio direction.
     </p>
 
+    <% const qaProjects = projects.filter(project => project.category === 'qa'); %>
     <% const universityProjects = projects.filter(project => project.category === 'uni'); %>
 
     <section class="project-section" aria-labelledby="qa-projects-heading">
       <div class="section-heading">
         <h2 id="qa-projects-heading">Software Tester / QA Projects</h2>
         <p>
-          Placeholder areas for future Tester / QA artefacts. These will be developed as I apply software testing
-          knowledge to apps, websites, APIs, databases, and selected software projects.
+          Project-based testing and QA artefacts developed through hands-on review of real applications, websites,
+          APIs, databases, and selected software projects.
         </p>
       </div>
 
       <div class="row g-4">
-        <% testingAreas.forEach(area => { %>
+        <% qaProjects.forEach(project => { %>
           <div class="col-md-6 col-lg-4">
             <article class="info-card h-100">
+              <p class="small text-secondary mb-2">
+                <%= project.type %>
+              </p>
+
               <h3 class="h4">
-                <%= area.title %>
+                <%= project.title %>
               </h3>
 
               <p>
-                <%= area.summary %>
+                <%= project.summary %>
               </p>
 
-              <ul class="tag-list" aria-label="Skills covered in <%= area.title %>">
-                <% area.skills.forEach(skill => { %>
+              <ul class="tag-list" aria-label="Testing and QA focus for <%= project.title %>">
+                <% project.technologies.forEach(tech => { %>
                   <li>
-                    <%= skill %>
+                    <%= tech %>
                   </li>
                 <% }) %>
               </ul>
 
               <p class="small text-secondary mt-3 mb-0">
-                Artefacts to be added
+                <%= project.status %>
               </p>
+
+              <a class="btn btn-outline-primary mt-3" href="/projects/<%= project.slug %>">
+                Project details
+              </a>
             </article>
           </div>
         <% }) %>

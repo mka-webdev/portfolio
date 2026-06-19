@@ -8,98 +8,188 @@
 <body>
   <%- include('../partials/navbar') %>
 
-    <main id="main-content" class="container page-main">
-      <nav aria-label="Breadcrumb" class="mb-4">
-        <a href="/projects">Projects</a>
-        <span aria-hidden="true"> / </span>
-        <span>
-          <%= project.title %>
-        </span>
-      </nav>
+  <main id="main-content" class="container page-main">
+    <nav aria-label="Breadcrumb" class="mb-4">
+      <a href="/projects">Projects</a>
+      <span aria-hidden="true"> / </span>
+      <span><%= project.title %></span>
+    </nav>
 
-      <header class="page-header">
-        <p class="text-secondary mb-2">
-          <%= project.type %>
+    <header class="page-header">
+      <p class="text-secondary mb-2">
+        <%= project.type %>
+      </p>
+
+      <h1>
+        <%= project.title %>
+      </h1>
+
+      <p class="lead">
+        <%= project.summary %>
+      </p>
+
+      <% if (project.githubReadme) { %>
+        <p class="project-repo-link mt-4">
+          <a href="<%= project.githubReadme %>" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <span>Project documentation on GitHub</span>
+            <span class="visually-hidden">opens in a new tab</span>
+          </a>
         </p>
+      <% } %>
 
-        <h1>
-          <%= project.title %>
-        </h1>
-
-        <p class="lead">
-          <%= project.summary %>
-        </p>
-
-        <% if (project.githubReadme) { %>
-          <p class="project-repo-link mt-4">
-            <a href="<%= project.githubReadme %>" target="_blank" rel="noopener noreferrer">
-              <i class="fa-brands fa-github" aria-hidden="true"></i>
-              <span>Project documentation on GitHub</span>
+      <% if (project.externalLinks && project.externalLinks.length) { %>
+        <% project.externalLinks.forEach(link => { %>
+          <p class="project-repo-link mt-3">
+            <a href="<%= link.url %>" target="_blank" rel="noopener noreferrer">
+              <% if (link.icon) { %>
+                <i class="<%= link.icon %>" aria-hidden="true"></i>
+              <% } %>
+              <span><%= link.label %></span>
               <span class="visually-hidden">opens in a new tab</span>
             </a>
           </p>
-          <% } %>
+        <% }) %>
+      <% } %>
+    </header>
 
-            <% if (project.externalLinks && project.externalLinks.length) { %>
-              <% project.externalLinks.forEach(link=> { %>
-                <p class="project-repo-link mt-3">
-                  <a href="<%= link.url %>" target="_blank" rel="noopener noreferrer">
-                    <% if (link.icon) { %>
-                      <i class="<%= link.icon %>" aria-hidden="true"></i>
-                      <% } %>
-                        <span>
-                          <%= link.label %>
-                        </span>
-                        <span class="visually-hidden">opens in a new tab</span>
-                  </a>
-                </p>
-                <% }) %>
-                  <% } %>
-      </header>
+    <% if (project.gallery && project.gallery.length) { %>
+      <section class="project-gallery" aria-labelledby="project-gallery-heading">
+        <h2 id="project-gallery-heading" class="visually-hidden">Project screenshots</h2>
 
-      <% if (project.gallery && project.gallery.length) { %>
-        <section class="project-gallery" aria-labelledby="project-gallery-heading">
-          <h2 id="project-gallery-heading" class="visually-hidden">Project screenshots</h2>
+        <ul class="project-gallery-list">
+          <% project.gallery.forEach(image => { %>
+            <li>
+              <figure class="project-gallery-card">
+                <img src="<%= image.src %>" alt="<%= image.alt %>">
 
-          <ul class="project-gallery-list">
-            <% project.gallery.forEach(image=> { %>
-              <li>
-                <figure class="project-gallery-card">
-                  <img src="<%= image.src %>" alt="<%= image.alt %>">
+                <figcaption class="project-gallery-caption">
+                  <%= image.caption %>
+                </figcaption>
+              </figure>
+            </li>
+          <% }) %>
+        </ul>
+      </section>
+    <% } %>
 
-                  <figcaption class="project-gallery-caption">
-                    <%= image.caption %>
-                  </figcaption>
-                </figure>
-              </li>
-              <% }) %>
-          </ul>
-        </section>
+    <% if (project.testingSummary) { %>
+      <% const accordionId = `testingAccordion-${project.slug}`; %>
+
+      <section class="content-section project-testing-section" aria-labelledby="project-testing-heading">
+        <h2 id="project-testing-heading">Testing process</h2>
+
+        <p class="lead">
+          <%= project.testingSummary.intro %>
+        </p>
+
+        <% if (project.testingSummary.sections && project.testingSummary.sections.length) { %>
+          <div class="accordion project-testing-accordion" id="<%= accordionId %>">
+            <% project.testingSummary.sections.forEach((section, index) => { %>
+              <% const headingId = `testing-heading-${project.slug}-${index}`; %>
+              <% const collapseId = `testing-collapse-${project.slug}-${index}`; %>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="<%= headingId %>">
+                  <button
+                    class="accordion-button <%= index === 0 ? '' : 'collapsed' %>"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#<%= collapseId %>"
+                    aria-expanded="<%= index === 0 ? 'true' : 'false' %>"
+                    aria-controls="<%= collapseId %>">
+                    <%= section.title %>
+                  </button>
+                </h3>
+
+                <div
+                  id="<%= collapseId %>"
+                  class="accordion-collapse collapse <%= index === 0 ? 'show' : '' %>"
+                  aria-labelledby="<%= headingId %>"
+                  data-bs-parent="#<%= accordionId %>">
+
+                  <div class="accordion-body">
+                    <% if (section.type === 'table' && section.columns && section.rows) { %>
+                      <div class="table-responsive testing-summary-table-wrap">
+                        <table class="table table-bordered align-middle testing-summary-table">
+                          <caption class="visually-hidden">
+                            <%= project.title %> - <%= section.title %>
+                          </caption>
+
+                          <thead>
+                            <tr>
+                              <% section.columns.forEach(column => { %>
+                                <th scope="col">
+                                  <%= column %>
+                                </th>
+                              <% }) %>
+                            </tr>
+                          </thead>
+
+                          <tbody>
+                            <% section.rows.forEach(row => { %>
+                              <tr>
+                                <% row.forEach((cell, cellIndex) => { %>
+                                  <% if (cellIndex === 0) { %>
+                                    <th scope="row">
+                                      <%= cell %>
+                                    </th>
+                                  <% } else { %>
+                                    <td>
+                                      <%= cell %>
+                                    </td>
+                                  <% } %>
+                                <% }) %>
+                              </tr>
+                            <% }) %>
+                          </tbody>
+                        </table>
+                      </div>
+                    <% } else if (section.body && section.body.length) { %>
+                      <% section.body.forEach(item => { %>
+                        <article class="testing-summary-item">
+                          <h4>
+                            <%= item.heading %>
+                          </h4>
+
+                          <p>
+                            <%= item.text %>
+                          </p>
+                        </article>
+                      <% }) %>
+                    <% } else { %>
+                      <p class="mb-0">Content will be added later.</p>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <p class="mb-0">Detailed testing process content will be added later.</p>
         <% } %>
+      </section>
+    <% } %>
 
-          <section class="content-section pt-0">
-            <h2 class="mt-4">Technologies and tools</h2>
+    <section class="content-section pt-0">
+      <h2 class="mt-4">Technologies and tools</h2>
 
-            <% if (project.stack && project.stack.length) { %>
-              <ul class="project-stack-list">
-                <% project.stack.forEach(item=> { %>
-                  <li>
-                    <strong>
-                      <%= item.label %>:
-                    </strong>
-                    <span>
-                      <%= item.value %>
-                    </span>
-                  </li>
-                  <% }) %>
-              </ul>
-              <% } %>
-          </section>
-    </main>
+      <% if (project.stack && project.stack.length) { %>
+        <ul class="project-stack-list">
+          <% project.stack.forEach(item => { %>
+            <li>
+              <strong><%= item.label %>:</strong>
+              <span><%= item.value %></span>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </section>
+  </main>
 
-    <%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
